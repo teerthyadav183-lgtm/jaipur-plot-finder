@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#0a0a0a" name="theme-color"/>
+<meta content="Premium JDA &amp; RERA approved plotted developments in Jaipur. Explore verified project information, galleries and personalised property guidance by Teerth Yadav." name="description"/>
+<title>Jaipur Plot Finder | Teerth Yadav</title>
+<style>
+:root{
+  --bg:#070707;--panel:#101010;--panel2:#151515;--gold:#d6b56b;--gold2:#f0d99b;
+  --text:#f6f2e9;--muted:#aaa398;--line:rgba(214,181,107,.25);
+  --shadow:0 24px 70px rgba(0,0,0,.48);--radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% -10%,#2a2418 0,#0b0b0b 32%,#050505 70%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.gold{color:var(--gold2)}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-size:.72rem;font-weight:700}
+h1,h2,h3{line-height:1.08;margin:0 0 14px}
+h1{font-size:clamp(2.7rem,7vw,6.5rem);letter-spacing:-.045em}
+h2{font-size:clamp(2rem,4vw,3.7rem);letter-spacing:-.035em}
+h3{font-size:1.45rem}
+p{color:var(--muted);margin:0 0 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:999px;border:1px solid var(--line);background:#111;color:var(--text);cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 12px 30px rgba(214,181,107,.12)}
+.btn.gold-btn{background:linear-gradient(135deg,#c9a65a,#f0d99b);color:#090909;border:0;font-weight:800}
+.btn.ghost{background:transparent}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(6,6,6,.76);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:900;letter-spacing:.08em;font-size:.9rem}
+.brand span{color:var(--gold2)}
+.navlinks{display:flex;gap:26px;color:#cfc8ba;font-size:.9rem}
+.navlinks a:hover{color:var(--gold2)}
+.menu{display:none;background:none;border:0;color:white;font-size:1.5rem}
+.hero{min-height:100vh;display:grid;align-items:end;padding:130px 0 70px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.72) 42%,rgba(0,0,0,.25) 100%);z-index:1}
+.hero-slideshow{position:absolute;inset:0;z-index:0;overflow:hidden;background:#050505}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1.1s ease,transform 3.5s ease;filter:saturate(.8)}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(transparent,var(--bg))}
+.hero-content{position:relative;z-index:2;max-width:850px}
+.hero-copy{max-width:680px;font-size:1.08rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.trust-strip{position:relative;z-index:2;margin-top:42px;display:flex;flex-wrap:wrap;gap:10px}
+.trust{padding:10px 14px;border:1px solid var(--line);background:rgba(8,8,8,.7);border-radius:999px;color:#ddd6c8;font-size:.82rem}
+section{padding:95px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+.section-head p{max-width:600px}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.panel{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);box-shadow:var(--shadow)}
+.about-copy{padding:34px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}
+.stat{padding:24px;border-radius:17px;background:#0d0d0d;border:1px solid rgba(255,255,255,.07)}
+.stat strong{display:block;font-size:1.9rem;color:var(--gold2)}
+.stat span{font-size:.8rem;color:var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.project{overflow:hidden;position:relative}
+.project.featured{grid-column:span 2}
+.project-media{height:310px;position:relative;overflow:hidden}
+.featured .project-media{height:430px}
+.project-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.project:hover .project-media img{transform:scale(1.045)}
+.project-media:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 65%)}
+.badges{position:absolute;top:16px;left:16px;z-index:2;display:flex;gap:7px;flex-wrap:wrap}
+.badge{padding:7px 10px;border-radius:999px;background:rgba(7,7,7,.78);border:1px solid var(--line);font-size:.7rem;color:#eee}
+.project-content{padding:24px}
+.project-meta{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+.meta{font-size:.78rem;color:#cfc7b8;background:#0c0c0c;border:1px solid rgba(255,255,255,.07);padding:7px 9px;border-radius:9px}
+.project-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.project-grid img{height:125px;width:100%;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.more-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.more-card{overflow:hidden}
+.more-card img{height:190px;width:100%;object-fit:cover}
+.more-body{padding:18px}
+.more-body .btn{margin-top:8px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.feature{padding:22px;min-height:150px}
+.feature .icon{font-size:1.4rem;color:var(--gold2);margin-bottom:14px}
+.map-cta{padding:55px;background:linear-gradient(135deg,#17130c,#0b0b0b 60%);border:1px solid var(--line);border-radius:30px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px}
+.map-cta p{max-width:700px}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{padding:25px}
+.step-num{color:var(--gold2);font-weight:900;font-size:1.7rem}
+.faq{display:grid;gap:10px;max-width:900px}
+details{background:#0d0d0d;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 20px}
+summary{cursor:pointer;font-weight:700}
+footer{padding:55px 0 95px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-grid{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:30px}
+.footer-links{display:grid;gap:8px;color:var(--muted)}
+.float-wa{position:fixed;right:18px;bottom:18px;z-index:60}
+.float-wa .btn{box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{width:min(760px,100%);max-height:90vh;overflow:auto;background:#101010;border:1px solid var(--line);border-radius:24px;padding:28px;position:relative}
+.close{position:absolute;right:16px;top:12px;background:none;border:0;color:#ddd;font-size:1.7rem;cursor:pointer}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.78rem;color:#cfc7b8}
+.field input,.field select,.field textarea{width:100%;background:#090909;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:11px;padding:12px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.small-note{font-size:.74rem;color:#777;margin-top:10px}.detail-top{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin:22px 0}.detail-kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}.detail-kpis div{padding:17px;background:#0b0b0b;border:1px solid rgba(255,255,255,.08);border-radius:13px}.detail-kpis b{display:block;color:var(--gold2);font-size:.68rem;letter-spacing:.09em;margin-bottom:5px}.detail-kpis span{color:#ddd;font-size:.84rem}.detail-sections{display:grid;grid-template-columns:1fr 1fr;gap:12px}.detail-section{padding:20px;background:linear-gradient(145deg,#ffffff08,#ffffff02);border:1px solid rgba(255,255,255,.08);border-radius:15px}.detail-section ul{padding-left:18px;color:#cfc7b9}.detail-section li{margin:6px 0}.detail-gallery{margin-top:14px;padding:20px;background:#0b0b0b;border:1px solid rgba(255,255,255,.08);border-radius:15px}.detail-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:14px;padding:22px;background:linear-gradient(135deg,#1b160d,#0b0b0b);border:1px solid var(--line);border-radius:15px}
+.hidden{display:none}
+@media(max-width:900px){.detail-top,.detail-sections{grid-template-columns:1fr}.detail-cta{flex-direction:column;align-items:flex-start}
+ .navlinks{display:none}.menu{display:block}
+ .navlinks.show{display:flex;position:absolute;top:74px;left:0;right:0;background:#090909;padding:18px 4%;flex-direction:column;border-bottom:1px solid #222}
+ .about-grid,.projects,.more-grid,.feature-grid,.process,.footer-grid{grid-template-columns:1fr}
+ .project.featured{grid-column:span 1}.featured .project-media{height:330px}
+ .map-cta{grid-template-columns:1fr}.project-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){.detail-kpis{grid-template-columns:1fr 1fr}
+ section{padding:70px 0}.hero{padding-top:120px}.hero-copy{font-size:1rem}
+ .project-media,.featured .project-media{height:270px}.project-grid{grid-template-columns:1fr 1fr}
+ .form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.stats{grid-template-columns:1fr 1fr}
+}
+
+.growth-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.growth-card{padding:25px;background:linear-gradient(145deg,#ffffff08,#ffffff02);border:1px solid #ffffff10;border-radius:var(--radius)}.growth-list{display:grid;gap:8px;margin-top:14px}.growth-list div{padding:11px 13px;background:#0b0b0b;border:1px solid #ffffff0a;border-radius:10px;color:#ddd6c9}.growth-list b{color:var(--gold2)}
+@media(max-width:900px){.detail-top,.detail-sections{grid-template-columns:1fr}.detail-cta{flex-direction:column;align-items:flex-start}.growth-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a class="brand" href="#top">JAIPUR <span>PLOT FINDER</span></a>
+<nav class="navlinks" id="navlinks">
+<a href="#projects">Main Projects</a>
+<a href="#more">More Projects</a>
+<a href="#why">Why Us</a>
+<a href="#contact">Contact</a>
+</nav>
+<button aria-label="Menu" class="menu" onclick="toggleMenu()">☰</button>
+</div>
+</header>
+<main id="top">
+
+
+
+
+
+
+
+
+<section class="hero">
+<div class="container hero-content">
+<div class="eyebrow">CURATED PLOT OPPORTUNITIES • JAIPUR</div>
+<h1>Own a Plot.<br/><span class="gold">Build Your Future.</span></h1>
+<p class="hero-copy">Premium plotted developments across Jaipur's growth corridors — with project information, approval details, connectivity and personalised guidance in one place.</p>
+<div class="hero-actions">
+<a class="btn gold-btn" href="#projects">Explore Projects</a>
+<button class="btn ghost" onclick="openLead('General Property Enquiry')">Get Personalised Options</button>
+</div>
+<div class="trust-strip">
+<span class="trust">✓ JDA Approved Projects</span>
+<span class="trust">✓ RERA Registered Projects</span>
+<span class="trust">✓ Property Guidance</span>
+<span class="trust">✓ Site Visit Assistance</span>
+</div>
+</div>
+</section><section id="projects">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">FEATURED COLLECTION</div><h2>Main Projects</h2></div>
+<p>Five priority projects, presented with verified registration references and the project information currently available. Ask for detailed maps, master plans and current availability on WhatsApp.</p>
+</div>
+<div class="projects">
+<article class="panel project featured">
+<div class="project-media">
+<img alt="Chart Knowledge Park" src="IMG-20260724-WA0005.jpg"/>
+<div class="badges"><span class="badge">JDA APPROVED</span><span class="badge">RERA REGISTERED</span><span class="badge">FEATURED</span></div>
+</div>
+<div class="project-content">
+<div class="eyebrow">01 • KNOWLEDGE CITY / CHITODA</div>
+<h3>CHART KNOWLEDGE PARK</h3>
+<p>A plotted development positioned on the Diggi–Malpura Road / Knowledge City side of Jaipur. The project is registered as <strong style="color:#fff">The Knowledge Park</strong> under RERA.</p>
+<div class="project-meta">
+<span class="meta">RERA: RAJ/P/2025/4390</span>
+<span class="meta">Residential Plots</span>
+<span class="meta">Chitoda • Jaipur 303904</span>
+</div>
+<p><strong style="color:#e9dfcd">Location:</strong> Diggi–Malpura Road, Chitoda / Knowledge City, Jaipur.</p>
+<div class="project-grid">
+<img alt="" src="IMG-20260724-WA0005.jpg"/>
+<img alt="" src="IMG-20260724-WA0008.jpg"/>
+<img alt="" src="IMG-20260724-WA0010.jpg"/>
+<img alt="" src="IMG-20260724-WA0012.jpg"/>
+<img alt="" src="IMG-20260724-WA0016.jpg"/>
+</div>
+<div class="project-actions">
+<button class="btn gold-btn" onclick="openLead('CHART KNOWLEDGE PARK')">Request Details</button>
+<button class="btn" onclick="openProject('knowledge')">View Project Info</button>
+</div>
+</div>
+</article>
+<article class="panel project">
+<div class="project-media">
+<img alt="Chart Nexara" src="IMG-20260715-WA0019.jpg"/>
+<div class="badges"><span class="badge">JDA APPROVED</span><span class="badge">RERA REGISTERED</span></div>
+</div>
+<div class="project-content">
+<div class="eyebrow">02 • JAIJASPURA / MAHINDRA WORLD CITY SIDE</div>
+<h3>CHART NEXARA</h3>
+<p>A newly launched plotted residential project in Jaijaspura, with Mahindra World City as a key nearby landmark.</p>
+<div class="project-meta">
+<span class="meta">RERA: RAJ/P/2026/5221</span>
+<span class="meta">27 Acres</span>
+<span class="meta">497 Units</span>
+</div>
+<div class="project-grid">
+<img alt="" src="IMG-20260715-WA0019.jpg"/>
+<img alt="" src="IMG-20260715-WA0016.jpg"/>
+<img alt="" src="IMG-20260715-WA0015.jpg"/>
+</div>
+<div class="project-actions"><button class="btn gold-btn" onclick="openLead('CHART NEXARA')">Request Details</button><button class="btn" onclick="openProject('nexara')">View Info</button></div>
+</div>
+</article>
+<article class="panel project">
+<div class="project-media">
+<img alt="The Orbis SEZ" src="IMG-20260514-WA0015.jpg"/>
+<div class="badges"><span class="badge">JDA APPROVED</span><span class="badge">RERA REGISTERED</span></div>
+</div>
+<div class="project-content">
+<div class="eyebrow">03 • NEAR MAHINDRA SEZ • AJMER ROAD</div>
+<h3>THE ORBIS SEZ</h3>
+<p>A premium plotted township near Mahindra SEZ on the Ajmer Road / Jaijaspura side of Jaipur, positioned around a major industrial and employment ecosystem.</p>
+<div class="project-meta">
+<span class="meta">RERA: RAJ/P/2026/5033</span>
+<span class="meta">26 Acres</span>
+<span class="meta">584 Units</span>
+</div>
+<div class="project-grid">
+<img alt="" src="IMG-20260514-WA0015.jpg"/>
+<img alt="" src="IMG-20260514-WA0010.jpg"/>
+<img alt="" src="IMG-20260514-WA0021.jpg"/>
+</div>
+<div class="project-actions"><button class="btn gold-btn" onclick="openLead('THE ORBIS SEZ')">Request Details</button><button class="btn" onclick="openProject('orbis')">View Info</button></div>
+</div>
+</article>
+<article class="panel project">
+<div class="project-media">
+<img alt="Silver Sands Silver Dunes" src="IMG-20260627-WA0006.jpg"/>
+<div class="badges"><span class="badge">JDA APPROVED</span><span class="badge">RERA REGISTERED</span></div>
+</div>
+<div class="project-content">
+<div class="eyebrow">04 • KNOWLEDGE CITY / DIGGI–MALPURA ROAD</div>
+<h3>SILVER SANDS / SILVER DUNES</h3>
+<p>Two phases / portions of the same project, presented together. Positioned adjoining Knowledge City on the Diggi–Malpura Road growth corridor.</p>
+<div class="project-meta">
+<span class="meta">RERA: RAJ/P/2026/4272</span>
+<span class="meta">Residential Plots</span>
+<span class="meta">Knowledge City Side</span>
+</div>
+<div class="project-grid">
+<img alt="" src="IMG-20260627-WA0006.jpg"/>
+<img alt="" src="1_30-SILVER-DUNES.jpg-scaled.webp"/>
+<img alt="" src="1_40-Photo-SILVER-DUNES.jpg.webp"/>
+</div>
+<div class="project-actions"><button class="btn gold-btn" onclick="openLead('SILVER SANDS / SILVER DUNES')">Request Details</button><button class="btn" onclick="openProject('silver')">View Info</button></div>
+</div>
+</article>
+<article class="panel project">
+<div class="project-media">
+<img alt="Akira Havenwoods" src="overview-com-2.webp"/>
+<div class="badges"><span class="badge">JDA APPROVED</span><span class="badge">RERA REGISTERED</span></div>
+</div>
+<div class="project-content">
+<div class="eyebrow">05 • CHITODA / DIGGI–MALPURA ROAD</div>
+<h3>AKIRA HAVENWOODS</h3>
+<p>Presented as the Havenwoods portion of the Akira project family; the RERA registration supplied for the project is registered as Akira Living.</p>
+<div class="project-meta">
+<span class="meta">RERA: RAJ/P/2025/4520</span>
+<span class="meta">Akira Living Registration</span>
+<span class="meta">Chitoda • Jaipur</span>
+</div>
+<div class="project-grid">
+<img alt="" src="overview-com-2.webp"/>
+<img alt="" src="5-1.webp"/>
+<img alt="" src="F1-2-1024x576.webp"/>
+</div>
+<div class="project-actions"><button class="btn gold-btn" onclick="openLead('AKIRA HAVENWOODS')">Request Details</button><button class="btn" onclick="openProject('akira')">View Info</button></div>
+</div>
+</article>
+</div>
+</div>
+</section><section>
+<div class="container">
+<div class="about-grid">
+<div class="panel about-copy">
+<div class="eyebrow">YOUR PROPERTY ADVISOR</div>
+<h2>Clarity before commitment.</h2>
+<p>I'm <strong style="color:#fff">Teerth Yadav</strong>, Property Consultant &amp; Wealth Creation Advisor. I help buyers shortlist suitable plotted projects, understand location advantages, review available project information and move towards a site visit and documentation with clarity.</p>
+<div class="hero-actions">
+<button class="btn gold-btn" onclick="openLead('Speak with Teerth Yadav')">Speak on WhatsApp</button>
+<a class="btn" href="tel:+919772083304">Call 9772083304</a>
+</div>
+</div>
+<div class="panel stats">
+<div class="stat"><strong>05</strong><span>Featured Projects</span></div>
+<div class="stat"><strong>04</strong><span>More / Previous Projects</span></div>
+<div class="stat"><strong>09</strong><span>Curated Listings</span></div>
+<div class="stat"><strong>1:1</strong><span>Personalised Guidance</span></div>
+</div>
+</div>
+</div>
+</section><section id="why">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">THE JAIPUR PLOT FINDER STANDARD</div><h2>Information that helps you decide.</h2></div><p>We keep the public page useful and concise. Detailed documents and maps are shared personally so buyers can receive the latest available information for the project they are considering.</p></div>
+<div class="feature-grid">
+<div class="panel feature"><div class="icon">◈</div><h3>Approval Focus</h3><p>Project-specific JDA / RERA information is shown where available, with registration numbers kept project-wise.</p></div>
+<div class="panel feature"><div class="icon">⌖</div><h3>Location Intelligence</h3><p>Understand the corridor, nearby landmarks and connectivity before planning a site visit.</p></div>
+<div class="panel feature"><div class="icon">▣</div><h3>Project Galleries</h3><p>Real project images are organised under the correct project instead of generic stock photography.</p></div>
+<div class="panel feature"><div class="icon">↗</div><h3>Wealth Perspective</h3><p>Growth drivers are explained as location context—not as guaranteed returns or promises.</p></div>
+</div>
+</div>
+</section><section id="more">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">ARCHIVE / ADDITIONAL OPTIONS</div><h2>More Projects</h2></div><p>Previous and additional projects remain available without competing with the five featured projects above.</p></div>
+<div class="more-grid">
+<article class="panel more-card">
+<img alt="Kings Residency" src="proj_img-45780_1-770x400.jpg"/>
+<div class="more-body"><div class="eyebrow">06</div><h3>KINGS RESIDENCY</h3><p>Project information, availability and detailed location available on request.</p><button class="btn" onclick="openLead('KINGS RESIDENCY')">Request Details</button></div>
+</article>
+<article class="panel more-card">
+<img alt="Jai Sagar City" src="overview-com-1.webp"/>
+<div class="more-body"><div class="eyebrow">07</div><h3>JAI SAGAR CITY</h3><p>Knowledge City-side project listing with project details available on request.</p><button class="btn" onclick="openLead('JAI SAGAR CITY')">Request Details</button></div>
+</article>
+<article class="panel more-card">
+<img alt="Shree Ganesham" src="4-1.webp"/>
+<div class="more-body"><div class="eyebrow">08</div><h3>SHREE GANESHAM</h3><p>Gated residential plotted township near the Mahindra SEZ / Ajmer Road ecosystem.</p><button class="btn" onclick="openLead('SHREE GANESHAM')">Request Details</button></div>
+</article>
+<article class="panel more-card">
+<img alt="Rukmani Nagar" src="rukaman.webp"/>
+<div class="more-body"><div class="eyebrow">09</div><h3>RUKMANI NAGAR</h3><p>Additional plotted project. Ask for current availability, location and documents.</p><button class="btn" onclick="openLead('RUKMANI NAGAR')">Request Details</button></div>
+</article>
+</div>
+</div>
+</section><section id="growth">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">LOCATION &amp; GROWTH</div><h2>What is developing around the project?</h2></div><p>Nearby development is shown project-wise. Relevant roads, employment hubs, education, healthcare and other growth drivers are presented only where supported by the available project information.</p></div>
+<div class="growth-grid">
+<div class="growth-card"><div class="eyebrow">THE ORBIS SEZ</div><h3>Near Mahindra SEZ • Ajmer Road</h3><div class="growth-list">
+<div><b>Mahindra SEZ</b> — approx. 7 minutes*</div>
+<div><b>Flipkart Warehouse</b> — approx. 2 minutes*</div>
+<div><b>Bagru Industrial Area</b> — approx. 10 minutes*</div>
+<div><b>Airport</b> — approx. 30 minutes*</div>
+<div><b>Ring Road</b> — approx. 15 minutes*</div>
+<div><b>Schools &amp; education</b> — listed nearby in the reference project information</div>
+</div></div>
+<div class="growth-card"><div class="eyebrow">KNOWLEDGE CITY CORRIDOR</div><h3>Diggi–Malpura Road • Chitoda side</h3><div class="growth-list">
+<div><b>Knowledge City</b> — key surrounding education/development context</div>
+<div><b>Diggi–Malpura Road</b> — primary corridor for the Knowledge City-side projects</div>
+<div><b>Chitoda / Renwal side</b> — relevant project location context</div>
+<div><b>Detailed distances</b> — shown/requested project-wise</div>
+<div><b>Master Plan / Zonal Map</b> — available through WhatsApp request</div>
+</div></div>
+</div>
+<p class="note">*Approximate travel times are from the reference project listing and should be treated as indicative, not guaranteed journey times.</p>
+</div>
+</section><section>
+<div class="container">
+<div class="map-cta">
+<div>
+<div class="eyebrow">PRIVATE PROJECT INFORMATION</div>
+<h2>Need the detailed map?</h2>
+<p>Request the detailed location map, zonal development map, master-plan reference, layout/site plan, brochure or current availability directly on WhatsApp.</p>
+</div>
+<button class="btn gold-btn" onclick="openLead('Detailed Map / Master Plan / Zonal Map')">REQUEST MAP &amp; DOCUMENTS</button>
+</div>
+</div>
+</section></main>
+<footer id="contact">
+<div class="container footer-grid">
+<div>
+<div class="eyebrow">JAIPUR PLOT FINDER</div>
+<h2 style="font-size:2rem">TEERTH YADAV</h2>
+<p>Property Consultant | Wealth Creation Advisor</p>
+<p>For project information, site visits, availability and documentation guidance.</p>
+</div>
+<div>
+<div class="eyebrow">CONTACT</div>
+<div class="footer-links">
+<a href="tel:+919772083304">Call: 9772083304</a>
+<a href="https://wa.me/919772083304" rel="noopener" target="_blank">WhatsApp: 9772083304</a>
+</div>
+</div>
+<div>
+<div class="eyebrow">QUICK ACCESS</div>
+<div class="footer-links">
+<a href="#projects">Main Projects</a>
+<a href="#more">More Projects</a>
+<a href="#why">Why Jaipur Plot Finder</a>
+<button class="btn" onclick="openLead('General Property Enquiry')" style="width:max-content">Enquire Now</button>
+</div>
+</div>
+</div>
+<div class="container" style="margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);font-size:.75rem;color:#777">
+  Project information is presented for enquiry and comparison. RERA/JDA records, title, approvals, availability, pricing and documents should be independently reviewed before any transaction. No appreciation or return is guaranteed.
+</div>
+</footer>
+<div class="float-wa"><a class="btn gold-btn" href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20want%20details%20about%20your%20plot%20projects." rel="noopener" target="_blank">WhatsApp</a></div>
+<div aria-hidden="true" class="modal" id="leadModal">
+<div class="modal-box">
+<button class="close" onclick="closeModal()">×</button>
+<div class="eyebrow">PRIVATE PROJECT ENQUIRY</div>
+<h2 style="font-size:2.2rem">Get the details on WhatsApp.</h2>
+<p>Share a few details and your request will open directly in WhatsApp.</p>
+<form id="leadForm" onsubmit="sendLead(event)">
+<div class="form-grid">
+<div class="field"><label>Your Name *</label><input id="name" placeholder="Name" required=""/></div>
+<div class="field"><label>WhatsApp Number *</label><input id="phone" inputmode="tel" placeholder="10-digit number" required=""/></div>
+<div class="field"><label>Interested Project</label><select id="project"></select></div>
+<div class="field"><label>Requirement</label>
+<select id="requirement">
+<option>Project Details</option>
+<option>Detailed Location Map</option>
+<option>Zonal Development Map</option>
+<option>Jaipur Master Plan</option>
+<option>Layout / Site Plan</option>
+<option>Price &amp; Availability</option>
+<option>Site Visit</option>
+</select>
+</div>
+<div class="field full"><label>Message</label><textarea id="message" placeholder="Tell us your plot size/budget or anything you need..." rows="3"></textarea></div>
+<div class="field full"><button class="btn gold-btn" type="submit">CONTINUE TO WHATSAPP →</button></div>
+</div>
+<div class="small-note">Your request is prepared as a WhatsApp message to 9772083304.</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="projectModal">
+<div class="modal-box">
+<button class="close" onclick="closeProject()">×</button>
+<div id="projectDetail"></div>
+</div>
+</div>
+<script>
+const projects={
+knowledge:{title:"CHART KNOWLEDGE PARK",subtitle:"Diggi–Malpura Road • Chitoda • Knowledge City, Jaipur",rera:"RAJ/P/2025/4390",overview:"Knowledge City-side residential plotted opportunity. The surrounding Knowledge City South planning context is the key education, institutional and infrastructure story.",size:"Current sanctioned area: request project sheet",plots:"Current plot count: request latest inventory",plotSizes:"Reference: 100 sq yd onwards; Phase 1 100+, Phase 2 150+, Phase 3 200+ sq yd",approvals:["JDA approval focus","RERA registered","RERA: RAJ/P/2025/4390"],amenities:["Rain-water harvesting","Water supply network","Interlocking-tile roads","Town walk / public pathways","Sewerage network","Sports / medical facility context","Siddhi Vinayak Temple","Social Courtyard","Story Spot","Rosarium","Play mounds / sand pits","Fitness trail","Dhyan Kendra"],connectivity:["Diggi–Malpura Road","60 ft sector-road access mentioned in reference","Knowledge City South connection via 200 ft road","NH-12 / Ring Road / sector-road connectivity mentioned in reference","Airport, railway station and bus-stand connectivity mentioned in reference"],nearby:["Knowledge City South","Chitora","Diggi–Malpura Road","Retail brands mentioned in reference: V-Mart, Kapa and Puma"],education:["Knowledge City South reference: 1,784 bigha education-focused plan","University: 61.66 ha","IT Institute: 17.88 ha","Technical institutes: 28.07 ha","Higher-order educational institutes: 28.79 ha","Medical institutions: 26.95 ha","Medical college / hospital: 18.43 ha","International library: 2.03 ha","Sports facilities: 14.93 ha"],growth:["Education hub","IT and technical institutes","Medical / hospital ecosystem","Commercial and retail uses","Convention centre and hotel","Parks / woodland","Roads, plantation corridor and cycle-track planning","Reference scheme context: 473 hectares"],note:"Surrounding planning is development context, not a guarantee of appreciation."},
+nexara:{title:"CHART NEXARA",subtitle:"Jaijaspura • Mahindra World City side • Jaipur",rera:"RAJ/P/2026/5221",overview:"Residential plotted development in Jaijaspura, with the Mahindra World City / SEZ ecosystem and Ajmer Road corridor as important surrounding growth context.",size:"Reference project sheet: approx. 27 acres*",plots:"Reference project sheet: approx. 497 units*",plotSizes:"Current inventory: request latest plot-size sheet",approvals:["JDA approval focus","RERA registered","RERA: RAJ/P/2026/5221"],amenities:["Project-specific current amenities: request approved brochure","Gated / plotted-development format","Current infrastructure specifications to be confirmed"],connectivity:["Jaijaspura","Mahindra World City ecosystem","Ajmer Road / NH-48 corridor","Detailed landmark distances: request project map"],nearby:["Mahindra World City / SEZ","Ajmer Road / NH-48","Industrial, logistics and employment ecosystem"],education:["Current nearby education list and distances: request project map","Wider Ajmer Road education / social infrastructure context"],growth:["Mahindra World City: roughly 3,000 acres in reference material","Reference material states 130+ companies","Corporate / industrial employment ecosystem","Ajmer Road connectivity","Warehousing / logistics corridor"],note:"Surrounding ecosystem figures are context, not the size of Chart Nexara and not a return guarantee."},
+orbis:{title:"THE ORBIS SEZ",subtitle:"Near Mahindra SEZ • Ajmer Road / Jaipur–Ajmer Highway",rera:"RAJ/P/2026/5033",overview:"Gated residential plotting township near Mahindra World City / SEZ with organised roads, utilities, green/public spaces and a major industrial-employment ecosystem nearby.",size:"Current sanctioned area: request project sheet",plots:"Current plot count: request latest inventory",plotSizes:"Phase 1: 100 sq yd onwards; Phase 2: 150 sq yd onwards",approvals:["JDA / Government approval reference","RERA approved","RERA: RAJ/P/2026/5033"],amenities:["24×7 security","Boom-barrier entrance","CCTV surveillance","Interlocking-tile roads","Street lights","Water supply","Sewerage","Drainage","Rain-water harvesting","Jogging / fitness trail","Kids play area","Landscape gardens / parks","Visitor parking","Garbage collection point","Outer boundary / fencing","Town walk","Social Courtyard","Story Spot","Rosarium","Play mounds / sand pits","Dhyan Kendra","Siddhi Vinayak Temple"],connectivity:["Mahindra SEZ — approx. 7 min*","Flipkart Warehouse — approx. 2 min*","Jayshree Periwal International School — approx. 10 min*","Neerja Modi School — approx. 7 min*","Bagru Industrial Area — approx. 10 min*","St. Xavier College — approx. 15 min*","Airport — approx. 30 min*","Nevta Dam — approx. 15 min*","Muhana Mandi — approx. 20 min*","Ring Road — approx. 15 min*"],nearby:["Mahindra World City / SEZ","Bagru Industrial Area","Flipkart warehouse / logistics ecosystem","Ajmer Road / NH-48","Ring Road","Nevta Dam","Muhana Mandi"],education:["Jayshree Periwal International School — approx. 10 min*","Neerja Modi School — approx. 7 min*","St. Xavier College — approx. 15 min*"],growth:["Mahindra World City / SEZ: roughly 3,000 acres in reference material","Reference material states 130+ companies","Corporate and industrial employment ecosystem","Bagru industrial area","Warehousing / logistics activity","Ajmer Road / NH-48 connectivity"],note:"Industrial/employment context is not a guarantee of future appreciation."},
+silver:{title:"SILVER SANDS / SILVER DUNES",subtitle:"Adjoining Knowledge City • Diggi–Malpura Road • Jaipur",rera:"RAJ/P/2026/4272",overview:"Silver Sands and Silver Dunes are presented together as two phases / portions of the same project, as supplied. The location sits adjoining the Knowledge City corridor.",size:"Current sanctioned area: request project sheet",plots:"Current plot count: request latest inventory",plotSizes:"Current inventory: request latest plot-size sheet",approvals:["JDA approval focus","RERA registered","RERA: RAJ/P/2026/4272"],amenities:["Project-specific current amenities: request approved brochure","Residential plotted format","Current infrastructure list supplied with project documents"],connectivity:["Diggi–Malpura Road","Knowledge City corridor","Chitora / Knowledge City side","Detailed landmark distances: request project map"],nearby:["Knowledge City South","Chitora","Diggi–Malpura Road","Education / institutional ecosystem"],education:["Knowledge City reference includes university, IT institutes, technical institutes, higher-order institutes, medical institutions, medical college / hospital and library uses"],growth:["Education hub","IT / technical education","Medical / healthcare","Commercial / retail","Convention centre / hotel","Parks / woodland","Road and cycle-track planning"],note:"Knowledge City planning is surrounding context, not a guarantee of appreciation."},
+akira:{title:"AKIRA HAVENWOODS",subtitle:"Akira Living registration • Chittora / Diggi Road • Jaipur",rera:"RAJ/P/2025/4520",overview:"Akira Havenwoods is presented as the Havenwoods portion of the Akira project family. The supplied RERA registration reference is for Akira Living.",size:"Current sanctioned area: request approved project sheet",plots:"Current plot count: request latest inventory",plotSizes:"Third-party listing reports 100–350 sq yd* for Akira Living; confirm current project documents",approvals:["JDA approval focus","RERA registered","RERA: RAJ/P/2025/4520"],amenities:["Project-specific current amenities: request approved brochure","Residential plotted format","Current infrastructure specifications to be confirmed"],connectivity:["Chittora / Diggi Road","Knowledge City-side corridor","Detailed road and landmark distances: request project map"],nearby:["Knowledge City South","Diggi–Malpura Road corridor","Chittora"],education:["Knowledge City South planning includes university, IT institutes, technical institutes, higher-order educational institutes, medical institutions and medical college / hospital"],growth:["Education ecosystem","IT / technical education potential","Medical / healthcare ecosystem","Commercial / institutional uses","Road and cycle-track planning context"],note:"Surrounding Knowledge City planning is context, not a guarantee of appreciation."}
+};
+
+const allProjects=["CHART KNOWLEDGE PARK","CHART NEXARA","THE ORBIS SEZ","SILVER SANDS / SILVER DUNES","AKIRA HAVENWOODS","KINGS RESIDENCY","JAI SAGAR CITY","SHREE GANESHAM","RUKMANI NAGAR","General Property Enquiry","Speak with Teerth Yadav"];
+
+const allProjects=["CHART KNOWLEDGE PARK","CHART NEXARA","THE ORBIS SEZ","SILVER SANDS / SILVER DUNES","AKIRA HAVENWOODS","KINGS RESIDENCY","JAI SAGAR CITY","SHREE GANESHAM","RUKMANI NAGAR","General Property Enquiry","Speak with Teerth Yadav"];
+
+function toggleMenu(){document.getElementById("navlinks").classList.toggle("show")}
+function openLead(project){
+ const select=document.getElementById("project");
+ select.innerHTML=allProjects.map(p=>`<option>${p}</option>`).join("");
+ if(project) select.value=project;
+ document.getElementById("leadModal").classList.add("open");
+ document.getElementById("leadModal").setAttribute("aria-hidden","false");
+}
+function closeModal(){document.getElementById("leadModal").classList.remove("open")}
+function sendLead(e){
+ e.preventDefault();
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const project=document.getElementById("project").value;
+ const req=document.getElementById("requirement").value;
+ const msg=document.getElementById("message").value.trim();
+ const text=`Hello Teerth Ji,%0A%0AName: ${encodeURIComponent(name)}%0AWhatsApp: ${encodeURIComponent(phone)}%0AProject: ${encodeURIComponent(project)}%0ARequirement: ${encodeURIComponent(req)}%0AMessage: ${encodeURIComponent(msg||"Please share the available details.")}`;
+ window.open(`https://wa.me/919772083304?text=${text}`,"_blank");
+}
+function openProject(key){
+ const p=projects[key], list=a=>a.map(x=>`<li>${x}</li>`).join("");
+ document.getElementById("projectDetail").innerHTML=`
+ <div class="eyebrow">COMPLETE PROJECT PROFILE</div>
+ <h2 style="font-size:clamp(2.2rem,5vw,4rem)">${p.title}</h2>
+ <p style="color:#d5cdbc;font-size:1.02rem">${p.subtitle}</p>
+ <div class="project-meta"><span class="meta">JDA APPROVAL FOCUS</span><span class="meta">RERA REGISTERED</span><span class="meta">RERA: ${p.rera}</span></div>
+ <div class="detail-top"><div class="panel feature"><div class="eyebrow">PROJECT OVERVIEW</div><h3>What is this project?</h3><p style="color:#ddd">${p.overview}</p></div>
+ <div class="detail-kpis"><div><b>PROJECT SIZE</b><span>${p.size}</span></div><div><b>TOTAL PLOTS / UNITS</b><span>${p.plots}</span></div><div><b>PLOT SIZES</b><span>${p.plotSizes}</span></div><div><b>RERA</b><span>${p.rera}</span></div></div></div>
+ <div class="detail-sections">
+ <div class="detail-section"><div class="eyebrow">01 • APPROVALS</div><h3>Legal / Registration</h3><ul>${list(p.approvals)}</ul></div>
+ <div class="detail-section"><div class="eyebrow">02 • AMENITIES</div><h3>What is available?</h3><ul>${list(p.amenities)}</ul></div>
+ <div class="detail-section"><div class="eyebrow">03 • CONNECTIVITY</div><h3>Nearby roads & destinations</h3><ul>${list(p.connectivity)}</ul></div>
+ <div class="detail-section"><div class="eyebrow">04 • NEARBY DEVELOPMENT</div><h3>Surrounding growth</h3><ul>${list(p.nearby)}</ul></div>
+ <div class="detail-section"><div class="eyebrow">05 • EDUCATION</div><h3>Education / healthcare ecosystem</h3><ul>${list(p.education)}</ul></div>
+ <div class="detail-section"><div class="eyebrow">06 • FUTURE GROWTH</div><h3>Growth drivers</h3><ul>${list(p.growth)}</ul><p class="small-note">${p.note}</p></div></div>
+ <div class="detail-gallery"><div class="eyebrow">PROJECT GALLERY</div><div class="project-grid"><img src="${galleryImage(key,0)}" alt="${p.title}"><img src="${galleryImage(key,1)}" alt="${p.title}"><img src="${galleryImage(key,2)}" alt="${p.title}"></div></div>
+ <div class="detail-cta"><div><div class="eyebrow">MAPS & DOCUMENTS</div><h3>Need detailed location / master plan?</h3><p>Request the detailed location map, zonal development map, Jaipur master-plan reference, layout, current price and availability directly on WhatsApp.</p></div><div class="project-actions"><button class="btn gold-btn" onclick="closeProject();openLead('${p.title.replaceAll("'","")}')">REQUEST MAP / MASTER PLAN</button><button class="btn" onclick="closeProject();openLead('${p.title.replaceAll("'","")}')">PRICE & SITE VISIT</button></div></div>
+ <p class="small-note">*Reference-source figures should be reconfirmed from current project documents before purchase. Where a reliable current figure was not found, the site intentionally asks for the latest project sheet instead of guessing.</p>`;
+ document.getElementById("projectModal").classList.add("open");
+ document.getElementById("projectModal").setAttribute("aria-hidden","false");
+}
+function galleryImage(k,i){
+ const g={knowledge:["IMG-20260724-WA0022.jpg","IMG-20260724-WA0023.jpg","F1-2-1024x576.webp"],nexara:["IMG-20260715-WA0019.jpg","IMG-20260715-WA0016.jpg","IMG-20260715-WA0015.jpg"],orbis:["IMG-20260514-WA0015.jpg","IMG-20260514-WA0010.jpg","IMG-20260514-WA0021.jpg"],silver:["IMG-20260627-WA0006.jpg","1_30-SILVER-DUNES.jpg-scaled.webp","1_40-Photo-SILVER-DUNES.jpg.webp"],akira:["overview-com-2.webp","5-1.webp","F1-2-1024x576.webp"]};
+ return g[k][i]||g[k][0]
+}
+function closeProject(){document.getElementById("projectModal").classList.remove("open")}
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("open")}));
+const heroSlides=[...document.querySelectorAll(".hero-slide")];let heroIndex=0;
+if(heroSlides.length>1){setInterval(()=>{heroSlides[heroIndex].classList.remove("active");heroIndex=(heroIndex+1)%heroSlides.length;heroSlides[heroIndex].classList.add("active")},3500)}
+document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
+</script>
+</body>
+</html>
