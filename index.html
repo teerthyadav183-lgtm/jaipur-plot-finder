@@ -150,7 +150,7 @@
         .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 9999; text-decoration: none; transition: 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* Lighter & Softer Popup Modal */
+        /* Popup Modal */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(5px); overflow-y: auto; }
         .modal-content { background: #1a2232; margin: 3% auto; padding: 30px; border: 1px solid var(--border-gold); border-radius: 8px; width: 92%; max-width: 900px; position: relative; color: var(--text-light); box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
         .close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; color: var(--gold-primary); cursor: pointer; transition: 0.2s; }
@@ -168,6 +168,11 @@
         .custom-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; color: #f1f5f9; }
         .custom-table th, .custom-table td { border: 1px solid rgba(226,183,64,0.3); padding: 9px 12px; text-align: left; }
         .custom-table th { background: rgba(226,183,64,0.2); color: var(--gold-primary); font-family: 'Cinzel', serif; }
+
+        /* Popup Image Gallery Grid Style */
+        .modal-gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .modal-gallery-grid img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-gold); transition: 0.3s; }
+        .modal-gallery-grid img:hover { transform: scale(1.03); border-color: var(--gold-hover); }
 
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2rem; }
@@ -464,11 +469,18 @@
         }
         setInterval(rotateSlides, 3500);
 
-        // 2. Exact Project Database (Verbatim Data Provided by Teerth ji)
+        // 2. Exact Project Database with Photo Galleries
         const projectData = {
             'knowledge': {
                 name: 'Plot in Knowledge City Chittora | 100 sq yds Onwards | Diggi Road Jaipur | Knowledge Park',
                 img: 'IMG-20260724-WA0005.jpg',
+                gallery: [
+                    'IMG-20260724-WA0005.jpg',
+                    'IMG-20260715-WA0019.jpg',
+                    'overview-com-1.webp',
+                    'overview-com-2.webp',
+                    'IMG-20260514-WA0015.jpg'
+                ],
                 location: 'Knowledge City Chittora, Diggi Malpura Road, Jaipur',
                 type: 'Residential Plot / Gated Township',
                 size: '100 sq yds to 500 Sq yds onwards',
@@ -519,6 +531,14 @@
             'orbis': {
                 name: 'Plots on Ajmer Road Jaipur | The Orbis Sez Near Mahindra Sez Jaipur Plots',
                 img: 'IMG-20260514-WA0015.jpg',
+                gallery: [
+                    'IMG-20260514-WA0015.jpg',
+                    'IMG-20260715-WA0019.jpg',
+                    'shree-ganesham-6.jpg',
+                    'proj_img-45780_1-770x400.jpg',
+                    'IMG-20260627-WA0006.jpg',
+                    'rukaman.webp'
+                ],
                 location: 'Near Jaipur-Ajmer Highway, Near Mahindra SEZ Jaipur',
                 type: 'Residential Plot / Gated Township',
                 size: '100 sq yds onwards',
@@ -556,6 +576,15 @@
             'nexara': {
                 name: 'Chart Nexara | Luxury Plots on Ajmer Road Near Mahindra SEZ Jaipur',
                 img: 'IMG-20260715-WA0019.jpg',
+                gallery: [
+                    'IMG-20260715-WA0019.jpg',
+                    'IMG-20260514-WA0015.jpg',
+                    'shree-ganesham-6.jpg',
+                    'proj_img-45780_1-770x400.jpg',
+                    'IMG-20260627-WA0006.jpg',
+                    'rukaman.webp',
+                    'overview-com-1.webp'
+                ],
                 location: 'Near Jaipur-Ajmer Highway, Mahindra SEZ Side, Jaipur',
                 type: 'Residential Plot / Luxury Township',
                 size: '100 sq yds to 150 sq yds onwards',
@@ -589,6 +618,13 @@
             'akira': {
                 name: 'Plot in Knowledge City Chittora | 100 sq yds Onwards | Diggi Road Jaipur | Akira Havenwoods',
                 img: 'overview-com-2.webp',
+                gallery: [
+                    'overview-com-2.webp',
+                    'IMG-20260724-WA0005.jpg',
+                    'overview-com-1.webp',
+                    'IMG-20260715-WA0019.jpg',
+                    'IMG-20260627-WA0006.jpg'
+                ],
                 location: 'Knowledge City Chittora, Diggi Malpura Road Corridor, Jaipur',
                 type: 'Residential Plot / Nature-Themed Township',
                 size: '100 sq yds to 500 Sq yds onwards',
@@ -616,6 +652,12 @@
             'jaisagar': {
                 name: 'Plot in Knowledge City Chittora | 100 sq yds Onwards | Diggi Road Jaipur | Jai Sagar City',
                 img: 'overview-com-1.webp',
+                gallery: [
+                    'overview-com-1.webp',
+                    'IMG-20260724-WA0005.jpg',
+                    'overview-com-2.webp',
+                    'IMG-20260715-WA0019.jpg'
+                ],
                 location: 'Knowledge City Chittora, Diggi Malpura Road, Jaipur',
                 type: 'Residential Plot / Township Development',
                 size: '100 sq yds to 500 Sq yds onwards',
@@ -642,6 +684,15 @@
             'silversands': {
                 name: 'Silver Sands / Silver Dunes | Ajmer Road 200ft Master Plan Road Plots',
                 img: 'IMG-20260627-WA0006.jpg',
+                gallery: [
+                    'IMG-20260627-WA0006.jpg',
+                    'IMG-20260715-WA0019.jpg',
+                    'IMG-20260514-WA0015.jpg',
+                    'shree-ganesham-6.jpg',
+                    'proj_img-45780_1-770x400.jpg',
+                    'rukaman.webp',
+                    'overview-com-2.webp'
+                ],
                 location: 'Ajmer Road Corridor, Jaipur',
                 type: 'Residential Plots / Gated Township',
                 size: '100 sq yds onwards',
@@ -672,6 +723,13 @@
             'ganesham': {
                 name: 'Shree Ganesham | 24.71 Acres JDA & RERA Approved Township near Mahindra SEZ',
                 img: 'shree-ganesham-6.jpg',
+                gallery: [
+                    'shree-ganesham-6.jpg',
+                    'IMG-20260715-WA0019.jpg',
+                    'IMG-20260514-WA0015.jpg',
+                    'proj_img-45780_1-770x400.jpg',
+                    'rukaman.webp'
+                ],
                 location: 'Near Jaipur-Ajmer Highway, Mahindra SEZ Side, Jaipur',
                 type: 'Residential Plot / Sprawling 24.71 Acres Township',
                 size: '100 sq yds onwards',
@@ -718,6 +776,13 @@
             'kings': {
                 name: 'Kings Residency | Mixed-Use Commercial & Residential Plotting at Bhankrota Jaipur',
                 img: 'proj_img-45780_1-770x400.jpg',
+                gallery: [
+                    'proj_img-45780_1-770x400.jpg',
+                    'IMG-20260715-WA0019.jpg',
+                    'IMG-20260514-WA0015.jpg',
+                    'shree-ganesham-6.jpg',
+                    'rukaman.webp'
+                ],
                 location: 'Bhankrota, Ajmer Road, Jaipur, Rajasthan - 302021',
                 type: 'Mixed-Use Development (Residential & Commercial Plots)',
                 size: '107 - 400 Sq. Yards',
@@ -745,6 +810,14 @@
             'rukmani': {
                 name: 'Rukmani Nagar | JDA Approved High ROI Plots in Jaipur',
                 img: 'rukaman.webp',
+                gallery: [
+                    'rukaman.webp',
+                    'IMG-20260715-WA0019.jpg',
+                    'IMG-20260514-WA0015.jpg',
+                    'shree-ganesham-6.jpg',
+                    'proj_img-45780_1-770x400.jpg',
+                    'IMG-20260627-WA0006.jpg'
+                ],
                 location: 'Jaipur Strategic Investment Belt',
                 type: 'Residential Investment Plots',
                 size: '100 sq yds onwards',
@@ -774,6 +847,7 @@
 
             let featHtml = data.features.map(f => `<li><i class="fa-solid fa-circle-check" style="color:var(--gold-primary);"></i> ${f}</li>`).join('');
             let advHtml = data.advantages.map(a => `<li><i class="fa-solid fa-location-dot" style="color:var(--gold-primary);"></i> ${a}</li>`).join('');
+            let galleryHtml = data.gallery.map(imgSrc => `<img src="${imgSrc}" alt="${data.name}">`).join('');
 
             const html = `
                 <h2>${data.name}</h2>
@@ -809,6 +883,15 @@
                     <h4>Property Availability</h4>
                     <p style="color:var(--gold-primary); font-weight:600;">${data.available}</p>
                 </div>
+
+                <!-- PROJECT PHOTO GALLERY GRID -->
+                <div class="modal-section" style="margin-top:20px;">
+                    <h4>Project Gallery & Layout Images</h4>
+                    <div class="modal-gallery-grid">
+                        ${galleryHtml}
+                    </div>
+                </div>
+
                 <div style="text-align:center; margin-top:25px;">
                     <button onclick="selectAndScroll('${data.name}')" class="btn-gold"><i class="fa-solid fa-map"></i> Request Zonal Map & Rates On WhatsApp</button>
                 </div>
