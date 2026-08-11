@@ -66,48 +66,40 @@
         .btn-gold { background: linear-gradient(135deg, var(--gold-primary), #8a641c); color: #000; padding: 10px 20px; font-weight: 700; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; text-decoration: none; display: inline-block; }
         .btn-gold:hover { background: linear-gradient(135deg, var(--gold-hover), var(--gold-primary)); transform: translateY(-2px); }
 
-        /* Hero Section with Hawa Mahal / Amer Fort Luxury Overlay */
+        /* Clean Hero Section */
         .hero {
             position: relative;
-            padding: 80px 5%;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
+            padding: 100px 5% 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            min-height: 85vh;
+            text-align: center;
+            min-height: 75vh;
             overflow: hidden;
             background: linear-gradient(rgba(8, 11, 16, 0.85), rgba(8, 11, 16, 0.92)), url('https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
         }
 
-        .hero-content { position: relative; z-index: 2; }
-        .hero-badge { display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold-primary); color: var(--gold-primary); padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 15px; }
-        .hero-text h1 { font-family: 'Cinzel', serif; font-size: 2.4rem; line-height: 1.25; margin-bottom: 15px; color: #fff; }
+        .hero-badge { display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold-primary); color: var(--gold-primary); padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+        .hero-text h1 { font-family: 'Cinzel', serif; font-size: 2.8rem; line-height: 1.25; margin-bottom: 15px; color: #fff; max-width: 900px; }
         .hero-text h1 span { color: var(--gold-primary); display: block; }
-        .hero-subtitle { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 10px; font-weight: 500; }
-        .hindi-tagline { font-size: 1rem; color: var(--gold-hover); margin-bottom: 25px; font-style: italic; font-weight: 500; }
+        .hero-subtitle { font-size: 1.2rem; color: #e2e8f0; margin-bottom: 15px; font-weight: 500; }
+        .hindi-tagline { font-size: 1.1rem; color: var(--gold-hover); margin-bottom: 30px; font-style: italic; font-weight: 500; }
 
-        .consultant-tag {
-            background: rgba(17, 22, 32, 0.8);
-            border-left: 3px solid var(--gold-primary);
-            padding: 10px 15px;
-            margin-bottom: 25px;
-            border-radius: 0 6px 6px 0;
-        }
-        .consultant-tag h4 { color: var(--gold-primary); font-size: 1.05rem; }
-        .consultant-tag p { font-size: 0.82rem; color: var(--text-muted); }
-
-        /* Auto Image Slider Gallery */
+        /* Auto Image Slider Gallery in Hero */
         .slider-box {
             position: relative;
             width: 100%;
-            height: 220px;
+            max-width: 850px;
+            height: 260px;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border-gold);
-            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
         }
         .slide-img {
             position: absolute;
+            top: 0; left: 0;
             width: 100%; height: 100%;
             object-fit: cover;
             opacity: 0;
@@ -115,31 +107,13 @@
         }
         .slide-img.active { opacity: 1; }
 
-        /* Hero Form */
-        .hero-form { position: relative; z-index: 2; background: rgba(17, 22, 32, 0.95); padding: 30px; border-radius: 8px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.8); backdrop-filter: blur(10px); }
-        .hero-form h3 { font-family: 'Cinzel', serif; color: var(--gold-primary); text-align: center; margin-bottom: 5px; text-transform: uppercase; font-size: 1.2rem; }
-        .hero-form p { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group input, .form-group select {
-            width: 100%; padding: 11px; background: #080b10; border: 1px solid #2a3442; color: #fff; border-radius: 4px; outline: none; font-family: inherit; font-size: 0.88rem;
-        }
-        .form-group input:focus, .form-group select:focus { border-color: var(--gold-primary); }
-
         /* Section Styling */
-        .section-title { text-align: center; margin: 60px 0 35px; }
+        .section-title { text-align: center; margin: 70px 0 35px; }
         .section-title span { color: var(--gold-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
-        .section-title h2 { font-family: 'Cinzel', serif; font-size: 2rem; margin-top: 5px; text-transform: uppercase; }
-
-        /* Growth Hubs Grid */
-        .hubs-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 5%; }
-        .hub-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); position: relative; }
-        .hub-card h3 { color: var(--gold-primary); font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 8px; }
-        .hub-card ul { list-style: none; }
-        .hub-card ul li { margin-bottom: 10px; font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: flex-start; gap: 8px; }
-        .hub-card ul li i { color: var(--gold-primary); margin-top: 4px; }
+        .section-title h2 { font-family: 'Cinzel', serif; font-size: 2.1rem; margin-top: 5px; text-transform: uppercase; }
 
         /* Projects Grid */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; padding: 0 5%; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 5%; }
         .project-card { background: var(--bg-card); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
         .project-card:hover { transform: translateY(-7px); border-color: var(--gold-primary); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15); }
         .card-img-container { position: relative; height: 210px; overflow: hidden; }
@@ -152,27 +126,48 @@
         .btn-outline { background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); padding: 8px 18px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; transition: 0.3s; text-decoration: none; display: inline-block; }
         .btn-outline:hover { background: var(--gold-primary); color: #000; }
 
-        /* More Projects Section */
-        .more-projects-wrapper { padding: 0 5%; margin-top: 50px; }
-        .more-title { text-align: center; font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold-primary); margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        /* Growth Hubs Grid */
+        .hubs-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 5%; }
+        .hub-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); position: relative; }
+        .hub-card h3 { color: var(--gold-primary); font-family: 'Cinzel', serif; font-size: 1.25rem; margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 8px; }
+        .hub-card ul { list-style: none; }
+        .hub-card ul li { margin-bottom: 10px; font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: flex-start; gap: 8px; }
+        .hub-card ul li i { color: var(--gold-primary); margin-top: 4px; }
 
-        /* Floating WhatsApp Button */
+        /* Consultant Section */
+        .consultant-section { background: var(--bg-card); margin: 60px 5% 30px; padding: 35px; border-radius: 8px; border: 1px solid var(--border-gold); text-align: center; }
+        .consultant-section h3 { font-family: 'Cinzel', serif; color: var(--gold-primary); font-size: 1.6rem; margin-bottom: 5px; }
+        .consultant-section h4 { color: #fff; font-size: 1rem; margin-bottom: 15px; font-weight: 500; }
+        .consultant-section p { color: var(--text-muted); max-width: 750px; margin: 0 auto 20px; font-size: 0.9rem; }
+
+        /* Bottom Enquiry Form Section */
+        .bottom-form-section { background: #0c1017; padding: 50px 5%; border-top: 1px solid var(--border-gold); margin-top: 50px; }
+        .bottom-form-box { max-width: 650px; margin: 0 auto; background: var(--bg-card); padding: 35px; border-radius: 8px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .bottom-form-box h3 { font-family: 'Cinzel', serif; color: var(--gold-primary); text-align: center; margin-bottom: 5px; text-transform: uppercase; font-size: 1.3rem; }
+        .bottom-form-box p { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px; background: #080b10; border: 1px solid #2a3442; color: #fff; border-radius: 4px; outline: none; font-family: inherit; font-size: 0.9rem;
+        }
+        .form-group input:focus, .form-group select:focus { border-color: var(--gold-primary); }
+
+        /* Floating WhatsApp */
         .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 9999; text-decoration: none; transition: 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         /* Popup Modal */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); overflow-y: auto; }
-        .modal-content { background: var(--bg-card); margin: 5% auto; padding: 30px; border: 1px solid var(--border-gold); border-radius: 8px; width: 90%; max-width: 750px; position: relative; color: var(--text-light); }
+        .modal-content { background: var(--bg-card); margin: 4% auto; padding: 30px; border: 1px solid var(--border-gold); border-radius: 8px; width: 92%; max-width: 800px; position: relative; color: var(--text-light); }
         .close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; color: var(--gold-primary); cursor: pointer; }
         .modal-body h2 { font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 10px; }
-        .modal-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .modal-meta { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; line-height: 1.7; }
         .modal-section { margin-bottom: 20px; }
-        .modal-section h4 { color: var(--gold-primary); margin-bottom: 8px; text-transform: uppercase; font-size: 0.9rem; }
-        .modal-section ul { list-style: none; padding-left: 0; font-size: 0.85rem; color: #cbd5e1; }
-        .modal-section ul li { margin-bottom: 5px; }
+        .modal-section h4 { color: var(--gold-primary); margin-bottom: 10px; text-transform: uppercase; font-size: 0.95rem; border-left: 3px solid var(--gold-primary); padding-left: 8px; }
+        .modal-section ul { list-style: none; padding-left: 0; font-size: 0.88rem; color: #cbd5e1; }
+        .modal-section ul li { margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px; }
 
-        @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2rem; }
             .nav-links { display: none; }
             .top-bar-left { display: none; }
         }
@@ -204,110 +199,34 @@
         </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#why-invest">Why Invest</a></li>
             <li><a href="#featured-projects">Main Projects</a></li>
+            <li><a href="#why-invest">Why Invest</a></li>
             <li><a href="#more-projects">More Projects</a></li>
-            <li><a href="#quick-form">Enquiry</a></li>
+            <li><a href="#bottom-enquiry">Enquiry</a></li>
         </ul>
         <a href="https://wa.me/919772083304" class="btn-gold"><i class="fa-brands fa-whatsapp"></i> Chat Direct</a>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Clean Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge"><i class="fa-solid fa-award"></i> JDA & RERA APPROVED TOWNSHIPS</span>
-            <div class="hero-text">
-                <h1>RESIDENTIAL & COMMERCIAL <span>PLOTS IN JAIPUR</span></h1>
-                <div class="hero-subtitle">High Growth Investment Corridors in Ajmer Road & Diggi Road</div>
-                <div class="hindi-tagline">"अपने घर के लिए • बेहतर भविष्य और सुरक्षित निवेश के लिए"</div>
-            </div>
-
-            <!-- Consultant Profile -->
-            <div class="consultant-tag">
-                <h4>तीरथ यादव (Teerth Yadav)</h4>
-                <p>Property Consultant & Wealth Creation Advisor | +91 9772083304</p>
-            </div>
-
-            <!-- Auto Image Slider -->
-            <div class="slider-box">
-                <img src="IMG-20260715-WA0019.jpg" class="slide-img active" alt="Slider 1">
-                <img src="IMG-20260724-WA0005.jpg" class="slide-img" alt="Slider 2">
-                <img src="IMG-20260514-WA0015.jpg" class="slide-img" alt="Slider 3">
-                <img src="overview-com-2.webp" class="slide-img" alt="Slider 4">
-                <img src="IMG-20260627-WA0006.jpg" class="slide-img" alt="Slider 5">
-            </div>
+        <span class="hero-badge"><i class="fa-solid fa-award"></i> JDA & RERA APPROVED TOWNSHIPS</span>
+        <div class="hero-text">
+            <h1>JDA & RERA APPROVED <span>RESIDENTIAL & COMMERCIAL PLOTS</span></h1>
+            <div class="hero-subtitle">Premium Investment Locations in Ajmer Road Corridor & Diggi Road Knowledge City</div>
+            <div class="hindi-tagline">"अपने घर के लिए • बेहतरीन भविष्य और सुरक्षित निवेश के लिए"</div>
         </div>
 
-        <!-- Direct Form & Zonal Request -->
-        <div class="hero-form" id="quick-form">
-            <h3><i class="fa-solid fa-map"></i> Get Zonal Map & Rates</h3>
-            <p>Direct Zonal Map, DLC Rates & Master Plan Request on WhatsApp</p>
-            <form onsubmit="sendWhatsAppDirect(event)">
-                <div class="form-group"><input type="text" id="custName" placeholder="Your Full Name *" required></div>
-                <div class="form-group"><input type="tel" id="custPhone" placeholder="Mobile / WhatsApp Number *" required></div>
-                <div class="form-group">
-                    <select id="selectedProject" required>
-                        <option value="">-- Select Preferred Project --</option>
-                        <option value="Chart Nexara">Chart Nexara (Ajmer Road / SEZ)</option>
-                        <option value="Knowledge Park">Knowledge Park (Diggi Road)</option>
-                        <option value="The Orbis SEZ">The Orbis SEZ (Ajmer Road)</option>
-                        <option value="Akira Havenwoods">Akira Havenwoods (SEZ Corridor)</option>
-                        <option value="Silver Sands / Dunes">Silver Sands / Dunes (Ajmer Road)</option>
-                        <option value="Shree Ganesham">Shree Ganesham (Mahindra World City)</option>
-                        <option value="Jai Sagar City">Jai Sagar City (Diggi Road)</option>
-                        <option value="Kings Residency">Kings Residency</option>
-                        <option value="Rukmani Nagar">Rukmani Nagar</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-gold" style="width: 100%;"><i class="fa-brands fa-whatsapp"></i> Get Details On WhatsApp</button>
-            </form>
+        <!-- Auto Image Slider -->
+        <div class="slider-box">
+            <img src="IMG-20260715-WA0019.jpg" class="slide-img active" alt="Jaipur Property 1">
+            <img src="IMG-20260724-WA0005.jpg" class="slide-img" alt="Jaipur Property 2">
+            <img src="IMG-20260514-WA0015.jpg" class="slide-img" alt="Jaipur Property 3">
+            <img src="overview-com-2.webp" class="slide-img" alt="Jaipur Property 4">
+            <img src="IMG-20260627-WA0006.jpg" class="slide-img" alt="Jaipur Property 5">
         </div>
     </section>
 
-    <!-- Why Invest Section -->
-    <section id="why-invest" style="padding-top: 20px;">
-        <div class="section-title">
-            <span>HIGH ROI GROWTH CORRIDORS</span>
-            <h2>WHY INVEST IN JAIPUR REAL ESTATE</h2>
-        </div>
-
-        <div class="hubs-container">
-            <!-- Hub 1: Mahindra SEZ -->
-            <div class="hub-card">
-                <h3><i class="fa-solid fa-city"></i> Mahindra SEZ Zone (Ajmer Road)</h3>
-                <ul>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>3,000+ एकड़ का मेगा प्रोजेक्ट:</strong> Mahindra & RIICO का जॉइंट वेंचर।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>60,000+ वर्तमान एम्प्लॉयमेंट:</strong> भविष्य में 2.5 लाख से 3 लाख+ रोजगार।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>300+ कंपनियाँ:</strong> Infosys, Genpact, ICICI, Deutsche Bank इत्यादि।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>100% पॉल्यूशन फ्री:</strong> धुआँ-रहित केवल IT, Education और Clean-Tech ज़ोन।</li>
-                </ul>
-            </div>
-
-            <!-- Hub 2: Knowledge City -->
-            <div class="hub-card">
-                <h3><i class="fa-solid fa-graduation-cap"></i> Knowledge City (Diggi Road)</h3>
-                <ul>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>3,000+ बीघा विशाल हब:</strong> जयपुर का उभरता हुआ 'बेंगलोर/सिलिकॉन वैली'।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>राजस्थान रॉयल्स क्रिकेट स्टेडियम:</strong> वर्ल्ड-क्लास स्पोर्ट्स इंफ्रास्ट्रक्चर।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>प्रीमियम यूनिवर्सिटीज़:</strong> पिरामल यूनिवर्सिटी, सेंट्रल संस्कृत यूनिवर्सिटी व अन्य।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>रैपिड कनेक्टिविटी:</strong> रिंग रोड, 60ft व 200ft सेक्टर रोड्स।</li>
-                </ul>
-            </div>
-
-            <!-- Hub 3: World Class Infrastructure -->
-            <div class="hub-card">
-                <h3><i class="fa-solid fa-trophy"></i> World-Class World Infrastructure</h3>
-                <ul>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>100% JDA & RERA Approved:</strong> 80% से 90% बैंक लोन सुविधा उपलब्ध।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>प्रीमियम डेवलपमेंट:</strong> चौड़ी इंटरलॉकिंग टाइल सड़कें, अंडरग्राउंड इलेक्ट्रिसिटी।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>सुरक्षित गेटेड कम्युनिटी:</strong> 24/7 CCTV, बूम बैरियर, पार्क्स, टेंपल व कम्युनिटी हॉल।</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>डायरेक्ट कंसल्टेशन:</strong> तीरथ यादव द्वारा 100% ऑथेंटिक डील।</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main 5 Projects Section -->
+    <!-- Main 5 Projects Section (Top Priority) -->
     <section id="featured-projects">
         <div class="section-title">
             <span>FEATURED DEVELOPMENTS</span>
@@ -325,7 +244,7 @@
                 <div class="card-body">
                     <h3>CHART NEXARA</h3>
                     <p>Near Ajmer Highway, Mahindra SEZ Side | RERA: RAJ/P/2026/5221</p>
-                    <button class="btn-outline" onclick="openModal('nexara')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('nexara')">View Full Details</button>
                 </div>
             </div>
 
@@ -338,7 +257,7 @@
                 <div class="card-body">
                     <h3>KNOWLEDGE PARK</h3>
                     <p>Knowledge City Chittora, Diggi Road | 100-500 Sq. Yds.</p>
-                    <button class="btn-outline" onclick="openModal('knowledge')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('knowledge')">View Full Details</button>
                 </div>
             </div>
 
@@ -351,7 +270,7 @@
                 <div class="card-body">
                     <h3>THE ORBIS SEZ</h3>
                     <p>Near Ajmer Highway, Mahindra SEZ | RERA: RAJ/P/2026/5033</p>
-                    <button class="btn-outline" onclick="openModal('orbis')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('orbis')">View Full Details</button>
                 </div>
             </div>
 
@@ -363,8 +282,8 @@
                 </div>
                 <div class="card-body">
                     <h3>AKIRA HAVENWOODS</h3>
-                    <p>Ajmer Road / SEZ Region | RERA: RAJ/P/2025/4520</p>
-                    <button class="btn-outline" onclick="openModal('akira')">View Details</button>
+                    <p>Ajmer Road / SEZ Corridor | RERA: RAJ/P/2025/4520</p>
+                    <button class="btn-outline" onclick="openModal('akira')">View Full Details</button>
                 </div>
             </div>
 
@@ -376,17 +295,63 @@
                 </div>
                 <div class="card-body">
                     <h3>SILVER SANDS / DUNES</h3>
-                    <p>Ajmer Road Prime Location | RERA: RAJ/P/2026/4272</p>
-                    <button class="btn-outline" onclick="openModal('silversands')">View Details</button>
+                    <p>Ajmer Road Prime Growth Corridor | RERA: RAJ/P/2026/4272</p>
+                    <button class="btn-outline" onclick="openModal('silversands')">View Full Details</button>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Why Invest Section -->
+    <section id="why-invest">
+        <div class="section-title">
+            <span>HIGH ROI GROWTH CORRIDORS</span>
+            <h2>WHY INVEST IN JAIPUR REAL ESTATE</h2>
+        </div>
+
+        <div class="hubs-container">
+            <!-- Hub 1: Mahindra SEZ -->
+            <div class="hub-card">
+                <h3><i class="fa-solid fa-city"></i> Mahindra SEZ Zone (Ajmer Road)</h3>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>3,000+ एकड़ का मेगा प्रोजेक्ट:</strong> Mahindra World City — Mahindra & RIICO का जॉइंट वेंचर।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>60,000+ वर्तमान एम्प्लॉयमेंट:</strong> अभी 60,000+ लोग कार्यरत हैं, जो फ्यूचर में 2.5 लाख से 3 लाख+ होने वाला है।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>300+ कंपनियाँ:</strong> Infosys, Genpact, ICICI, Deutsche Bank, JCB व अन्य मल्टीनेशनल हब।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>100% पॉल्यूशन फ्री:</strong> कोई धुआँ-रहित या भारी उद्योग नहीं; केवल IT, Education & Clean Tech ज़ोन।</li>
+                </ul>
+            </div>
+
+            <!-- Hub 2: Knowledge City -->
+            <div class="hub-card">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Knowledge City (Diggi Road)</h3>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>3,000+ बीघा विशाल हब:</strong> जयपुर का उभरता हुआ 'सिलिकॉन वैली / बैंगलोर'।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>राजस्थान रॉयल्स क्रिकेट स्टेडियम:</strong> वर्ल्ड-क्लास स्पोर्ट्स व एंटरटेनमेंट इंफ्रास्ट्रक्चर।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>प्रीमियम यूनिवर्सिटीज़:</strong> पिरामल यूनिवर्सिटी, सेंट्रल संस्कृत यूनिवर्सिटी व अन्य मेडिकल/टेक्निकल इंस्टीट्यूट्स।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>रैपिड कनेक्टिविटी:</strong> डायरेक्ट रिंग रोड, 60ft व 200ft सेक्टर रोड्स।</li>
+                </ul>
+            </div>
+
+            <!-- Hub 3: World Class Infrastructure -->
+            <div class="hub-card">
+                <h3><i class="fa-solid fa-trophy"></i> World-Class Township Infrastructure</h3>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>100% JDA & RERA Approved:</strong> 80% से 90% तक सभी प्रमुख बैंकों से लोन योग्य प्लॉट्स।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>वर्ल्ड-क्लास डेवलपमेंट:</strong> चौड़ी इंटरलॉकिंग टाइल सड़कें, अंडरग्राउंड इलेक्ट्रिसिटी व वॉटर सप्लाई।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>सुरक्षित गेटेड कम्युनिटी:</strong> 24/7 CCTV, बूम बैरियर एंट्री गेट, पार्क्स, टेंपल व कम्युनिटी हॉल।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>डायरेक्ट कंसल्टेशन:</strong> तीरथ यादव द्वारा 100% लीगल व ट्रांसपेरेंट प्रॉपर्टी गाइडेंस।</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- More Projects Section -->
     <section class="more-projects-wrapper" id="more-projects">
-        <h3 class="more-title">MORE RESIDENTIAL TOWNSHIPS</h3>
+        <div class="section-title">
+            <span>ADDITIONAL DEVELOPMENTS</span>
+            <h2>MORE RESIDENTIAL TOWNSHIPS</h2>
+        </div>
         <div class="projects-grid">
             
             <!-- Project 6: Shree Ganesham -->
@@ -398,7 +363,7 @@
                 <div class="card-body">
                     <h3>SHREE GANESHAM</h3>
                     <p>24.71 Acres Township near Mahindra World City Ecosystem</p>
-                    <button class="btn-outline" onclick="openModal('ganesham')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('ganesham')">View Full Details</button>
                 </div>
             </div>
 
@@ -411,7 +376,7 @@
                 <div class="card-body">
                     <h3>JAI SAGAR CITY</h3>
                     <p>Diggi Road / Knowledge Hub Connection Zone</p>
-                    <button class="btn-outline" onclick="openModal('jaisagar')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('jaisagar')">View Full Details</button>
                 </div>
             </div>
 
@@ -424,7 +389,7 @@
                 <div class="card-body">
                     <h3>KINGS RESIDENCY</h3>
                     <p>Gated Community Township with Bank Loan Facility</p>
-                    <button class="btn-outline" onclick="openModal('kings')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('kings')">View Full Details</button>
                 </div>
             </div>
 
@@ -437,15 +402,50 @@
                 <div class="card-body">
                     <h3>RUKMANI NAGAR</h3>
                     <p>High ROI Investment Location Belt in Jaipur</p>
-                    <button class="btn-outline" onclick="openModal('rukmani')">View Details</button>
+                    <button class="btn-outline" onclick="openModal('rukmani')">View Full Details</button>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Property Consultant Profile Section -->
+    <section class="consultant-section">
+        <h3>तीरथ यादव (TEERTH YADAV)</h3>
+        <h4>Property Consultant & Wealth Creation Advisor</h4>
+        <p>जयपुर के प्रमुख ग्रोथ कॉरिडोर्स (अजमेर रोड, महिंद्रा सेज और डिग्गी रोड नॉलेज सिटी) में 100% लीगल, JDA व RERA अप्रूव्ड प्लॉट्स में सुरक्षित निवेश और सही लोकेशन चुनने के लिए संपर्क करें।</p>
+        <a href="https://wa.me/919772083304" class="btn-gold"><i class="fa-brands fa-whatsapp"></i> Direct Connect: +91 9772083304</a>
+    </section>
+
+    <!-- Bottom Enquiry & Zonal Map Request Form -->
+    <section class="bottom-form-section" id="bottom-enquiry">
+        <div class="bottom-form-box">
+            <h3><i class="fa-solid fa-map-location-dot"></i> Get Zonal Map, DLC Rates & Master Plan</h3>
+            <p>Select your preferred project to receive complete map and details directly on WhatsApp</p>
+            <form onsubmit="sendWhatsAppDirect(event)">
+                <div class="form-group"><input type="text" id="custName" placeholder="Your Full Name *" required></div>
+                <div class="form-group"><input type="tel" id="custPhone" placeholder="Mobile / WhatsApp Number *" required></div>
+                <div class="form-group">
+                    <select id="selectedProject" required>
+                        <option value="">-- Select Preferred Project --</option>
+                        <option value="Chart Nexara">Chart Nexara (Ajmer Road / SEZ)</option>
+                        <option value="Knowledge Park">Knowledge Park (Diggi Road Chittora)</option>
+                        <option value="The Orbis SEZ">The Orbis SEZ (Ajmer Road)</option>
+                        <option value="Akira Havenwoods">Akira Havenwoods (SEZ Corridor)</option>
+                        <option value="Silver Sands / Dunes">Silver Sands / Dunes (Ajmer Road)</option>
+                        <option value="Shree Ganesham">Shree Ganesham (Mahindra World City)</option>
+                        <option value="Jai Sagar City">Jai Sagar City (Diggi Road)</option>
+                        <option value="Kings Residency">Kings Residency</option>
+                        <option value="Rukmani Nagar">Rukmani Nagar</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-gold" style="width: 100%;"><i class="fa-brands fa-whatsapp"></i> Request Zonal Map & Rates On WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919772083304" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/919772083304" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -469,88 +469,204 @@
         }
         setInterval(rotateSlides, 3500);
 
-        // 2. Project Popups Database
+        // 2. Comprehensive Complete Project Database (Full Details Restored)
         const projectData = {
             'nexara': {
                 name: 'CHART NEXARA',
-                location: 'Near Ajmer Highway, Mahindra SEZ side',
-                type: 'Luxury Residential Township / Plots',
+                location: 'Near Jaipur–Ajmer Highway, Mahindra SEZ side',
+                type: 'Luxury Residential Township / Investment Plots',
                 rera: 'RAJ/P/2026/5221',
-                size: 'Phase 1 (100 sq yd), Phase 2 (150 sq yd)',
-                features: ['Gated township with Boom-barrier entrance', '24x7 CCTV Security & Interlocking Roads', 'Town Walk, Social Courtyard, Rosarium', 'Dhyan Kendra & Siddhi Vinayak Temple'],
-                distances: ['Flipkart Warehouse: 2 min', 'Mahindra SEZ: 7 min', 'Neerja Modi School: 7 min', 'Jayshree Periwal School: 10 min', 'Ring Road: 15 min', 'Jaipur Airport: 30 min']
+                size: 'Phase 1 (100 sq. yd. onwards), Phase 2 (150 sq. yd. onwards)',
+                possession: 'Ready for Possession',
+                features: [
+                    'Gated Township with 24x7 Security & Boom Barrier',
+                    'CCTV Surveillance & Wide Interlocking Roads',
+                    'Underground Electricity, Water Supply & Sewerage Lines',
+                    'Rainwater Harvesting & Street Lights',
+                    'Special Amenities: Town Walk, Social Courtyard, Story Spot, Rosarium',
+                    'Fitness Trail, Dhyan Kendra & Siddhi Vinayak Temple',
+                    'Landscape Gardens, Kids Play Area & Vastu-Compliant Plots'
+                ],
+                distances: [
+                    'Flipkart Warehouse: 2 min',
+                    'Mahindra SEZ / World City: 7 min',
+                    'Neerja Modi School: 7 min',
+                    'Jayshree Periwal International School: 10 min',
+                    'Bagru Industrial Area: 10 min',
+                    'St. Xavier College: 15 min',
+                    'Nevta Dam: 15 min',
+                    'Ring Road Corridor: 15 min',
+                    'Muhana Mandi: 20 min',
+                    'Jaipur International Airport: 30 min'
+                ]
             },
             'knowledge': {
                 name: 'KNOWLEDGE PARK',
-                location: 'Knowledge City Chittora, Diggi Road, Jaipur',
-                type: 'Residential Plots',
-                rera: 'JDA Approved / Proposed 473-Hectare Scheme',
-                size: '100 to 500 Sq. Yds.',
-                features: ['60-ft Sector Road & 200-ft Road Connection', 'Close to Rajasthan Royals Cricket Stadium', 'Siddhi Vinayak Temple & Parks', 'Interlocking Roads & Sewerage Lines'],
-                distances: ['Proposed University & IT Hub Zone', 'Piramal & Central Sanskrit University nearby', 'Direct Ring Road Access']
+                location: 'Knowledge City Chittora, Diggi–Malpura Road, Jaipur',
+                type: 'Residential Plots / Township Development',
+                rera: 'JDA Approved / Proposed Scheme under Master Plan 2047',
+                size: '100 to 500 Sq. Yds. onwards',
+                possession: 'Ready for Possession',
+                features: [
+                    '60-ft Sector Road & 200-ft Sector Road Connection',
+                    'Located in Proposed 473-Hectare Knowledge Hub Scheme',
+                    'Proximity to University, IT Institute, Technical & Medical Colleges',
+                    'Close to Rajasthan Royals Cricket Stadium',
+                    'Interlocking Roads, Rainwater Harvesting & Sewerage Network',
+                    'Siddhi Vinayak Temple, Social Courtyard & Woodland Corridor Parks'
+                ],
+                distances: [
+                    'Direct Connection to Diggi–Malpura Highway',
+                    'NH-12 & Ring Road Expressway: 10-12 min',
+                    'Piramal University & Central Sanskrit University Zone',
+                    'Proposed Commercial, Hotel & Sports Complex Zones'
+                ]
             },
             'orbis': {
                 name: 'THE ORBIS SEZ',
-                location: 'Near Ajmer Highway, Mahindra SEZ side',
-                type: 'Residential Plots / Gated Township',
+                location: 'Near Jaipur–Ajmer Highway, Mahindra SEZ Side',
+                type: 'Residential Plots / Gated Township Development',
                 rera: 'RAJ/P/2026/5033',
-                size: 'Phase 1 (100 sq yd), Phase 2 (150 sq yd)',
-                features: ['Boom-barrier Entrance & CCTV Security', 'Wide Interlocking Tile Roads & Rainwater Harvesting', 'Fitness Trail & Siddhi Vinayak Temple'],
-                distances: ['Flipkart Warehouse: 2 min', 'Mahindra SEZ: 7 min', 'St. Xavier College: 15 min', 'Ring Road: 15 min', 'Jaipur Airport: 30 min']
+                size: 'Phase 1 (100 sq. yd. onwards), Phase 2 (150 sq. yd. onwards)',
+                possession: 'Ready for Possession',
+                features: [
+                    'Gated Township with Boom Barrier Entry & CCTV Security',
+                    'Wide Interlocking Roads, Sewerage & Water Supply System',
+                    'Rainwater Harvesting, Landscape Gardens & Jogging Track',
+                    'Town Walk, Social Courtyard, Rosarium & Fitness Trail',
+                    'Dhyan Kendra & Siddhi Vinayak Temple Within Campus',
+                    '100% Vastu-Compliant Layouts & Boundary Fencing'
+                ],
+                distances: [
+                    'Flipkart Warehouse: 2 min',
+                    'Mahindra SEZ: 7 min',
+                    'Neerja Modi School: 7 min',
+                    'Jayshree Periwal International School: 10 min',
+                    'Bagru Industrial Area: 10 min',
+                    'St. Xavier College: 15 min',
+                    'Nevta Dam: 15 min',
+                    'Ring Road: 15 min',
+                    'Muhana Mandi: 20 min',
+                    'Jaipur Airport: 30 min'
+                ]
             },
             'akira': {
                 name: 'AKIRA HAVENWOODS',
-                location: 'Ajmer Road / Mahindra SEZ Region',
-                type: 'Luxury Nature-Themed Township',
+                location: 'Ajmer Road / Mahindra SEZ Region, Jaipur',
+                type: 'Luxury Nature-Themed Residential Township',
                 rera: 'RAJ/P/2025/4520',
-                size: '100 Sq. Yds. Onwards',
-                features: ['Eco-Friendly Township & Lush Greenery', '24x7 Security & Boom Barrier Gate', 'Modern Amenities & Wide Roads'],
-                distances: ['Seamless Connectivity to Ajmer Highway', 'Close proximity to SEZ Employment Hub']
+                size: '100 Sq. Yds. onwards',
+                possession: 'Under Development / Fast Track Possession',
+                features: [
+                    'Eco-Friendly Nature-Themed Township Development',
+                    'Lush Landscape Gardens & Dedicated Green Zones',
+                    '24x7 Security with Boom Barrier Gated Entrance',
+                    'Wide Internal Roads, Water Lines & Underground Electrification',
+                    'Modern Community Infrastructure & Play Parks'
+                ],
+                distances: [
+                    'Seamless Connectivity to Ajmer Highway Corridor',
+                    'Mahindra SEZ Employment Hub: 8-10 min',
+                    'Schools, Colleges & Hospitals within 5-10 km radius'
+                ]
             },
             'silversands': {
-                name: 'SILVER SANDS / DUNES',
-                location: 'Ajmer Road, Jaipur',
+                name: 'SILVER SANDS / SILVER DUNES',
+                location: 'Ajmer Road Corridor, Jaipur',
                 type: 'Residential Plots / Gated Township',
                 rera: 'RAJ/P/2026/4272',
-                size: '100 Sq. Yds. Onwards',
-                features: ['Gated Community with Boundary Wall', 'Street Lights, Water & Electricity Lines', 'Parks & Landscaping'],
-                distances: ['Prime Ajmer Road Growth Belt', 'High Capital Appreciation Zone']
+                size: '100 Sq. Yds. onwards',
+                possession: 'Ready for Construction',
+                features: [
+                    'Gated Community with Complete Boundary Wall Fencing',
+                    'Wide Interlocking Internal Roads & Modern Street Lights',
+                    'Dedicated Water Storage Tank & Electricity Network',
+                    'Park, Green Spaces & Kids Recreation Area',
+                    'High Capital Appreciation Potential Area'
+                ],
+                distances: [
+                    'Direct Access to Jaipur-Ajmer Expressway',
+                    'Near Industrial & Commercial Growth Hubs'
+                ]
             },
             'ganesham': {
                 name: 'SHREE GANESHAM',
-                location: 'Near Ajmer Highway / Mahindra SEZ side',
-                type: '24.71 Acres Residential Township',
-                rera: 'JDA Approved / Bank Loanable',
-                size: '100 Sq. Yds. Onwards',
-                features: ['Located near 3000-Acre Mahindra World City Hub', '130+ Corporate Companies Ecosystem', 'Wide Roads, Water Supply & Parks'],
-                distances: ['Avenue Super Mart: 2.07 km (7 min)', 'Mahindra World City: 6.30 km (11 min)', 'Bagru Industrial Area: 4.30 km', 'Mansarovar Metro: 20 km']
+                location: 'Near Jaipur–Ajmer Highway / Mahindra SEZ Side',
+                type: '24.71 Acres Residential Township Development',
+                rera: 'JDA Approved Layout / Bank Loanable',
+                size: '100 Sq. Yds. onwards',
+                possession: 'Ready for Possession',
+                features: [
+                    'Located in 3000-Acre Mahindra World City Hub Ecosystem',
+                    'Proximity to 130+ MNC Companies (Infosys, Genpact, ICICI)',
+                    'Gated Security, Wide Roads & Overhead Water Tank',
+                    'Parks, Open Spaces & Drainage Infrastructure'
+                ],
+                distances: [
+                    'Avenue Super Mart (D-Mart): 2.07 km (7 min)',
+                    'Bagru Industrial Area: 4.30 km (10 min)',
+                    'Mahindra World City: 6.30 km (11 min)',
+                    'Ajmer Road: 7.00 km (12 min)',
+                    'Nevta Dam: 9.34 km (14 min)',
+                    'Ring Road Expressway: 11.9 km (15 min)',
+                    'Decathlon Ajmer Road: 14 km (19 min)',
+                    'Muhana Mandi: 16 km (21 min)',
+                    'Mansarovar Metro Station: 20 km (23 min)',
+                    'Jaipur Airport: 21 km (35 min)'
+                ]
             },
             'jaisagar': {
                 name: 'JAI SAGAR CITY',
-                location: 'Diggi Road / Knowledge City Corridor',
-                type: 'Residential Township',
-                rera: 'JDA Approved',
-                size: '100 Sq. Yds. Onwards',
-                features: ['JDA Approved Layout', 'Entry Road Infrastructure & Underground Lines', 'Drainage & Water Lines'],
-                distances: ['Educational & Knowledge Hub Zone', 'Connected to Main Diggi Highway']
+                location: 'Diggi Road / Knowledge City Corridor, Jaipur',
+                type: 'Residential Plots / Township Development',
+                rera: 'JDA Approved Status',
+                size: '100 Sq. Yds. onwards',
+                possession: 'Ready for Construction',
+                features: [
+                    'JDA Approved Layout Plan',
+                    'Main Entry Road Infrastructure & Demarcated Plots',
+                    'Underground Water Supply & Power Line Connection',
+                    'Drainage & Sewerage Network Systems',
+                    'Neighboring Major Educational & Knowledge Institutions'
+                ],
+                distances: [
+                    'Connected to Diggi Highway Belt',
+                    'Close to Ring Road Interchange & Knowledge City'
+                ]
             },
             'kings': {
                 name: 'KINGS RESIDENCY',
-                location: 'Jaipur Prime Residential Area',
-                type: 'Gated Township',
-                rera: 'JDA Approved / Bank Loan Available',
-                size: '100 Sq. Yds. Onwards',
-                features: ['Complete Boundary Fencing', 'Modern Amenities & Community Center', 'Wide Internal Roads'],
-                distances: ['Well connected to City Transport & Schools']
+                location: 'Jaipur Prime Residential Belt',
+                type: 'Residential Plots / Gated Township',
+                rera: 'JDA Approved / 80%-90% Bank Loan Available',
+                size: '100 Sq. Yds. onwards',
+                possession: 'Ready for Construction',
+                features: [
+                    'Complete Boundary Wall Fencing around Township',
+                    'Wide Internal Tile Roads & Street Lighting',
+                    'Community Park & Open Green Area',
+                    'Easy Bank Loan Approval Facility from Nationalized Banks'
+                ],
+                distances: [
+                    'Well Connected to Main Transportation Routes & Schools'
+                ]
             },
             'rukmani': {
                 name: 'RUKMANI NAGAR',
                 location: 'Jaipur Strategic Investment Belt',
-                type: 'Residential Plots',
-                rera: 'JDA Approved Status',
-                size: '100 Sq. Yds. Onwards',
-                features: ['Rapidly Developing Neighborhood', 'Clear Title Plots', 'High Future Return Potential'],
-                distances: ['Near Proposed Master Plan Roads']
+                type: 'Residential Investment Plots',
+                rera: 'Clear Title / JDA Approval Status',
+                size: '100 Sq. Yds. onwards',
+                possession: 'Ready for Possession',
+                features: [
+                    'Rapidly Developing Residential Neighborhood',
+                    'Clear Title Plots with Easy Transfer Process',
+                    'Planned Entry Roads & Demarcation',
+                    'High Future Capital Appreciation Return Potential'
+                ],
+                distances: [
+                    'Near Proposed Master Plan Roads & Connectivity Belts'
+                ]
             }
         };
 
@@ -559,24 +675,27 @@
             if(!data) return;
 
             let distHtml = data.distances.map(d => `<li><i class="fa-solid fa-location-dot" style="color:var(--gold-primary);"></i> ${d}</li>`).join('');
-            let featHtml = data.features.map(f => `<li><i class="fa-solid fa-check" style="color:var(--gold-primary);"></i> ${f}</li>`).join('');
+            let featHtml = data.features.map(f => `<li><i class="fa-solid fa-circle-check" style="color:var(--gold-primary);"></i> ${f}</li>`).join('');
 
             const html = `
                 <h2>${data.name}</h2>
                 <div class="modal-meta">
-                    <strong>Location:</strong> ${data.location} | <strong>Type:</strong> ${data.type}<br>
-                    <strong>RERA Status:</strong> ${data.rera} | <strong>Plot Sizes:</strong> ${data.size}
+                    <strong>Location:</strong> ${data.location}<br>
+                    <strong>Property Type:</strong> ${data.type}<br>
+                    <strong>RERA/JDA Status:</strong> ${data.rera}<br>
+                    <strong>Plot Sizes:</strong> ${data.size}<br>
+                    <strong>Possession Status:</strong> ${data.possession}
                 </div>
                 <div class="modal-section">
-                    <h4>Special Features & Amenities</h4>
+                    <h4>Complete Amenities & Features</h4>
                     <ul>${featHtml}</ul>
                 </div>
                 <div class="modal-section">
-                    <h4>Location Advantage & Connectivity</h4>
+                    <h4>Location Advantage & Distances</h4>
                     <ul>${distHtml}</ul>
                 </div>
                 <div style="text-align:center; margin-top:25px;">
-                    <button onclick="selectAndScroll('${data.name}')" class="btn-gold"><i class="fa-solid fa-map"></i> Request Zonal Map On WhatsApp</button>
+                    <button onclick="selectAndScroll('${data.name}')" class="btn-gold"><i class="fa-solid fa-map"></i> Request Zonal Map & Master Plan On WhatsApp</button>
                 </div>
             `;
             
@@ -591,7 +710,7 @@
         function selectAndScroll(projectName) {
             closeModal();
             document.getElementById('selectedProject').value = projectName;
-            document.getElementById('quick-form').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('bottom-enquiry').scrollIntoView({ behavior: 'smooth' });
         }
 
         function sendWhatsAppDirect(e) {
@@ -600,7 +719,7 @@
             const phone = document.getElementById('custPhone').value;
             const proj = document.getElementById('selectedProject').value;
             
-            const msg = `Hello Teerth ji! I need Zonal Map, DLC Rates & Details for ${proj}.%0AName: ${name}%0APhone: ${phone}`;
+            const msg = `Hello Teerth ji! I need Zonal Map, DLC Rates & Full Details for ${proj}.%0AName: ${name}%0APhone: ${phone}`;
             window.open(`https://wa.me/919772083304?text=${msg}`, '_blank');
         }
 
