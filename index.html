@@ -296,10 +296,16 @@
 
 
 /* --- 2. Mobile Responsive Screen Fix --- */
-@media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
+            html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
     }
+
+    .slider-box {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
 
     /* Top Bar Mobile */
     .top-bar {
