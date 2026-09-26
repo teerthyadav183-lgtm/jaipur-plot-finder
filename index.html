@@ -402,6 +402,17 @@ body {
     font-weight: 700 !important;
     padding: 7px 16px !important;
 }
+        .project-card img,
+.project-card .card-img-wrap,
+.project-card .card-badge {
+    pointer-events: none !important;
+}
+/* Card ke andar image aur badge click ko block na karein */
+.project-card img,
+.project-card .card-img-wrap,
+.project-card .card-badge {
+    pointer-events: none !important;
+}
 
     </style>
 </head>
@@ -1710,23 +1721,22 @@ body {
     });
     document.body.style.overflow = 'auto';
   });
-  // 3. Pure Column / Card par kahi bhi touch karne par direct screen khulegi
-  document.addEventListener('DOMContentLoaded', function () {
-    var cards = document.querySelectorAll('.project-card');
-    cards.forEach(function (card) {
-      card.style.cursor = 'pointer';
-      
-      // Card ke andar wala button pakad kar uska modal action seedhe card par set karo
+    // Pure Card ya Image par kahi bhi touch hone par turant modal khole
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('.project-card');
+    if (card && !e.target.closest('a')) {
       var btn = card.querySelector('button[onclick]');
       if (btn) {
-        var clickAttr = btn.getAttribute('onclick');
-        if (clickAttr) {
-          card.setAttribute('onclick', clickAttr);
+        var attr = btn.getAttribute('onclick');
+        var match = attr.match(/['"]([^'"]+)['"]/);
+        if (match && match[1]) {
+          openModal(match[1]);
+        } else {
+          btn.click();
         }
       }
-    });
+    }
   });
-    });
   });
 </script>
 
