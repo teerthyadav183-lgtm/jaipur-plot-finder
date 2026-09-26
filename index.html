@@ -344,6 +344,21 @@
 @media (max-width: 768px) {
     .nav-links, .top-bar-left { display: none !important; }
 }
+/* --- Customer Reviews Slider Styling --- */
+.review-slider-box {
+    position: relative;
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 25px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 12px;
+    text-align: center;
+}
+.review-item { display: none; }
+.review-item.active { display: block; animation: fadeInReview 0.6s ease; }
+@keyframes fadeInReview { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 768px) { .nav-links, .top-bar-left { display: none !important; } }
 
     </style>
 </head>
@@ -381,54 +396,55 @@
         <a href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20am%20interested%20in%20plots%20in%20Jaipur.%20Please%20share%20details." class="btn-gold" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Direct</a>
     </nav>
         <!-- Clean Hero Section: 50-50 Side-by-Side on All Screens -->
-    <section style="background: var(--bg-card); border-bottom: 1px solid var(--border-gold); padding: 15px 8px;">
-      <div class="hero-two-col">
-        
-        <!-- Left Side: Slider Box -->
-        <div class="hero-two-col-left">
-          <div class="slider-box" style="width: 100%; height: 260px; border-radius: 8px; position: relative; overflow: hidden; border: 1.5px solid var(--border-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-              <img src="IMG-20260715-WA0019.jpg" class="slide-img active" alt="Jaipur Property 1">
-              <img src="IMG-20260724-WA0005.jpg" class="slide-img" alt="Jaipur Property 2">
-              <img src="IMG-20260514-WA0015.jpg" class="slide-img" alt="Jaipur Property 3">
-              <img src="overview-com-2.webp" class="slide-img" alt="Jaipur Property 4">
-              <img src="IMG-20260627-WA0006.jpg" class="slide-img" alt="Jaipur Property 5">
-          </div>
-          <div style="text-align: center; margin-top: 8px;">
-            <span style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; display: inline-block;">
-              ✔ ऑन-ग्राउंड विजिट • 100% पट्टा
-            </span>
-          </div>
-        </div>
-
-        <!-- Right Side: Content Box -->
-        <div class="hero-two-col-right" style="display: flex; flex-direction: column; justify-content: center;">
-          <span style="color: var(--gold-primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
-            Premier Land Advisory
-          </span>
-          <h2 style="font-family: 'Cinzel', serif; font-size: 1.05rem; line-height: 1.25; color: #fff; margin-bottom: 6px;">
-            JDA & RERA APPROVED <span style="color: var(--gold-primary);">PLOTS IN JAIPUR</span>
-          </h2>
-
-          <p style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.4; margin-bottom: 6px;">
-            Jaipur's top growth corridors: <strong>Mahindra SEZ (Ajmer Rd)</strong>, 200ft <strong>Ring Road</strong> & <strong>Knowledge City (Diggi Rd)</strong>. Secure high-yield investments today.
-          </p>
-
-          <p style="color: #94a3b8; font-size: 0.72rem; line-height: 1.4; margin-bottom: 10px;">
-            <strong>Jaipur Plot Finder</strong> offers direct owner deals with <strong>0% brokerage</strong> and 80-90% bank loan approval.
-          </p>
-
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            <a href="https://wa.me/919772083304" target="_blank" class="btn-gold" style="padding: 6px 10px; font-size: 0.72rem; text-decoration: none;">
-              WhatsApp
-            </a>
-            <a href="#featured-projects" class="btn-outline" style="padding: 6px 8px; font-size: 0.72rem; text-decoration: none;">
-              View Plots →
-            </a>
-          </div>
-        </div>
-
+    <sec<!-- Clean Hero Section: 50-50 Side-by-Side on Mobile & Desktop -->
+<section style="background: var(--bg-card); border-bottom: 1px solid var(--border-gold); padding: 18px 8px;">
+  <div class="hero-two-col">
+    
+    <!-- Left Side: Slider Box -->
+    <div class="hero-two-col-left">
+      <div class="slider-box" style="width: 100%; height: 100%; min-height: 380px; border-radius: 8px; position: relative; overflow: hidden; border: 1.5px solid var(--border-gold); box-shadow: 0 6px 20px rgba(0,0,0,0.5);">
+          <img src="IMG-20260715-WA0019.jpg" class="slide-img active" alt="Jaipur Property 1">
+          <img src="IMG-20260724-WA0005.jpg" class="slide-img" alt="Jaipur Property 2">
+          <img src="IMG-20260514-WA0015.jpg" class="slide-img" alt="Jaipur Property 3">
+          <img src="overview-com-2.webp" class="slide-img" alt="Jaipur Property 4">
+          <img src="IMG-20260627-WA0006.jpg" class="slide-img" alt="Jaipur Property 5">
       </div>
-    </section>
+      <div style="text-align: center; margin-top: 8px;">
+        <span style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 14px; display: inline-block;">
+          ✔ ऑन-ग्राउंड विजिट • 100% पट्टा रजिस्ट्री
+        </span>
+      </div>
+    </div>
+
+    <!-- Right Side: 8-10 Lines Authority Content -->
+    <div class="hero-two-col-right" style="display: flex; flex-direction: column; justify-content: center;">
+      <span style="color: var(--gold-primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px;">
+        100% Legal & Safe Land Investment
+      </span>
+      <h2 style="font-family: 'Cinzel', serif; color: var(--gold-hover); font-size: 1.15rem; line-height: 1.3; margin-bottom: 8px;">
+        Invest in JDA Approved Plots in Jaipur with Jaipur Plot Finder
+      </h2>
+
+      <p style="color: #cbd5e1; font-size: 0.8rem; line-height: 1.55; margin-bottom: 8px;">
+        Jaipur has transformed into North India’s fastest-growing industrial and residential investment hub. The capital's prominent mega-corridors—including the 3,000-acre <strong>Mahindra World City SEZ on Ajmer Road</strong>, the rapid 200 ft <strong>Ring Road Expressway</strong>, and the massive 1,800-Bigha <strong>Knowledge City at Chittora (Diggi Road)</strong>—are witnessing unprecedented infrastructural expansion and consistently surging land values.
+      </p>
+
+      <p style="color: #94a3b8; font-size: 0.78rem; line-height: 1.55; margin-bottom: 8px;">
+        Whether you are a domestic family planning your dream residential home or an institutional investor from <strong>Delhi, Gurgaon, and Noida</strong> seeking solid portfolio diversification, <strong>Jaipur Plot Finder</strong> delivers absolute peace of mind. We provide verified JDA Patta documentation, pre-sanctioned 80% to 90% bank loan clearances, authentic video walkthroughs, and guaranteed <strong>0% brokerage direct owner pricing</strong>.
+      </p>
+
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
+        <a href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20am%20interested%20in%20plots%20in%20Jaipur." target="_blank" class="btn-gold" style="padding: 7px 14px; font-size: 0.75rem; text-decoration: none;">
+          WhatsApp Enquire
+        </a>
+        <a href="#featured-projects" class="btn-outline" style="padding: 7px 12px; font-size: 0.75rem; text-decoration: none;">
+          View Projects →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
       </div>
     </section>
@@ -501,30 +517,28 @@
                     <p>200ft Road Master Plan | NH-48 1km | Govt Hospital 300m</p>
                     <button class="btn-outline" onclick="openModal('silversands')">View Full Details</button>
                 </div>
-            </div>
+      </div>
+    </div>
+    
+    <!-- COMPACT VIP OFFER CARD (Outside Grid) -->
+    <div style="background: #111927; border: 1.5px solid var(--border-gold, #c5a880); border-radius: 14px; padding: 22px 15px; color: white; text-align: center; margin: 25px auto 15px; max-width: 1200px;">
+      <span style="background: #22c55e; color: #000; font-weight: 700; padding: 4px 12px; border-radius: 20px; font-size: 12px; display: inline-block;">
+        🚗 COMPLIMENTARY PICK-UP & DROP SITE VISIT
+      </span>
+      <h3 style="margin: 12px 0 10px 0; font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--gold-hover, #e6b740); font-family: 'Cinzel', serif;">
+        JDA Approved Plots in Jaipur — Schedule Your Free Site Tour
+      </h3>
+      <div style="font-size: 14px; color: #cbd5e1; margin-bottom: 16px; text-align: center; line-height: 1.6;">
+        <p style="margin: 4px 0;">✔ 100% JDA Patta & RERA Registered Projects</p>
+        <p style="margin: 4px 0;">✔ 0% Brokerage & Direct Advisory Assistance</p>
+        <p style="margin: 4px 0;">✔ Free Doorstep Pick-Up & Drop Facility Across Jaipur</p>
+      </div>
+      <a href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20would%20like%20to%20schedule%20a%20Free%20Site%20Visit." target="_blank" class="btn-gold" style="display: inline-block; padding: 9px 24px; font-size: 0.85rem; border-radius: 25px; text-decoration: none;">
+        🚗 Book Free Site Visit Now
+      </a>
+    </div>
+  </section>
 
-<!-- COMPACT VIP OFFER CARD -->
-<div style="background: #111827; border-radius: 16px; padding: 20px; color: white; text-align: center; margin: 30px auto; width: 90%; max-width: 600px; border: 1px solid #22c55e; box-shadow: 0 6px 20px rgba(0,0,0,0.3);">
-
-  <span style="background: #22c55e; color: #000; font-weight: 700; padding: 4px 12px; border-radius: 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
-    🚗 FREE PICK UP SITE VISIT
-  </span>
-
-  <h3 style="margin: 15px 0 10px 0; font-size: 18px; font-weight: 600; line-height: 1.4;">
-    जयपुर में JDA अप्रूव्ड प्लॉट्स - फ्री विजिट बुक करें
-  </h3>
-
-  <div style="font-size: 14px; color: #d1d5db; margin-bottom: 20px; text-align: center; line-height: 1.6;">
-    <p style="margin: 5px 0;">✔ 100% JDA & RERA Approved</p>
-    <p style="margin: 5px 0;">✔ 0% Brokerage & Direct Dealing</p>
-    <p style="margin: 5px 0;">✔ फ्री कार पिक-अप & ड्रॉप सुविधा</p>
-  </div>
-
-  <a href="https://wa.me/919772083304?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%20%E0%A4%A4%E0%A5%80%E0%A4%B0%E0%A4%A5%20%E0%A4%9C%E0%A5%80%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9B%E0%A5%87%20%E0%A4%AA%E0%A5%8D%E0%A4%B2%E0%A5%8C%E0%A4%9F%E0%A5%8D%E0%A4%B8%20%E0%A4%A6%E0%A5%87%E0%A4%96%E0%A4%A8%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%AF%E0%A5%87%20Free%20Pick%20Up%20%E0%A4%B8%E0%A4%BE%E0%A4%87%E0%A4%9F%20%E0%A4%B5%E0%A4%BF%E0%A4%9C%E0%A4%BF%E0%A4%9F%20%E0%A4%AC%E0%A5%81%E0%A4%95%20%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%80%20%E0%A4%B9%E0%A5%88%2C%20%E0%A4%94%E0%A4%B0%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%9C%E0%A5%87%E0%A4%95%E0%A5%8D%E0%A4%9F%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%A5%E0%A5%8B%E0%A4%A1%E0%A4%BC%E0%A5%80%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%B5%20%E0%A4%A8%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE%20%E0%A4%AD%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%8F%E0%A5%8D" target="_blank" style="background: #25D366; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 700; text-decoration: none; font-size: 15px; display: inline-block; transition: transform 0.2s;">
-    🚗 Book Free Site Visit Now
-  </a>
-</div>
-</section>
     <!-- Why Invest Section -->
     <section id="why-invest">
         <div class="section-title">
@@ -1162,6 +1176,176 @@
 
 </div>
 <!-- Google Reviews Section End -->
+        
+<!-- ================= CUSTOMER REVIEWS SWIPE SLIDER ================= -->
+<style>
+  .reviews-section-wrapper {
+    padding: 35px 12px;
+    background: rgba(13, 18, 28, 0.7);
+    border-top: 1px solid var(--border-gold, #c5a880);
+    border-bottom: 1px solid var(--border-gold, #c5a880);
+  }
+
+  .review-slider-box {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .review-swipe-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 15px;
+    padding: 10px 5px 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .review-swipe-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review-slide-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid var(--border-gold, #c5a880);
+    border-radius: 14px;
+    padding: 25px 18px;
+    box-sizing: border-box;
+  }
+
+  .review-dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .review-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease;
+  }
+  .review-dot.active {
+    background: var(--gold-primary, #d4af37);
+    width: 24px;
+    border-radius: 10px;
+  }
+</style>
+
+<section class="reviews-section-wrapper">
+  <div class="review-slider-box">
+    
+    <span style="color: var(--gold-primary, #d4af37); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;">
+      Verified Buyer Testimonials
+    </span>
+    <h3 style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.35rem; margin: 8px 0 8px;">
+      What Our Investors Say
+    </h3>
+    
+    <div style="color: #ffc107; font-size: 1rem; margin-bottom: 15px;">
+      ★★★★★ <span style="color: #cbd5e1; font-size: 0.8rem;">(4.9/5 based on verified client feedback)</span>
+    </div>
+
+    <!-- Swipe Track Container -->
+    <div class="review-swipe-track" id="reviewTrack">
+      
+      <!-- Slide 1 -->
+      <div class="review-slide-card">
+        <p style="color: #e2e8f0; font-size: 0.88rem; line-height: 1.65; font-style: italic; margin-bottom: 16px;">
+          "Finding legally safe and genuinely verified JDA-approved land around the highway growth corridors felt like a challenge initially. Teerth Yadav coordinated complete on-ground documentation, title verification, and loan processing seamlessly. The transparent 0% brokerage structure and direct registry support made my investment entirely stress-free."
+        </p>
+        <strong style="color: var(--gold-primary, #d4af37); font-size: 0.95rem; display: block; margin-bottom: 3px;">Amit Yadav</strong>
+        <span style="color: #94a3b8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;">Senior Tech Lead</span>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="review-slide-card">
+        <p style="color: #e2e8f0; font-size: 0.88rem; line-height: 1.65; font-style: italic; margin-bottom: 16px;">
+          "My primary goal was high capital appreciation combined with completely secure boundary demarcation. Jaipur Plot Finder provided prompt car pick-up for a thorough site tour and helped secure fast nationalized bank finance on clear JDA Patta land without any hidden costs or middlemen delays."
+        </p>
+        <strong style="color: var(--gold-primary, #d4af37); font-size: 0.95rem; display: block; margin-bottom: 3px;">Sunil Shekhawat</strong>
+        <span style="color: #94a3b8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;">Civil Infrastructure Contractor</span>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="review-slide-card">
+        <p style="color: #e2e8f0; font-size: 0.88rem; line-height: 1.65; font-style: italic; margin-bottom: 16px;">
+          "Outstation land investments usually suffer from a lack of legal clarity and timely coordination. Jaipur Plot Finder set a high benchmark here. From detailed on-ground video documentation to registry assistance at the government sub-registrar desk, everything was executed with flawless professionalism."
+        </p>
+        <strong style="color: var(--gold-primary, #d4af37); font-size: 0.95rem; display: block; margin-bottom: 3px;">Dr. Vikas Sharma</strong>
+        <span style="color: #94a3b8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;">Consultant Physician</span>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="review-slide-card">
+        <p style="color: #e2e8f0; font-size: 0.88rem; line-height: 1.65; font-style: italic; margin-bottom: 16px;">
+          "I wanted a prime township location directly linked to the emerging 200 ft Ring Road expressway network. Interacting directly with Teerth ensured genuine owner-tier pricing, immediate possession rights, and hassle-free documentation without dealing with aggressive brokers."
+        </p>
+        <strong style="color: var(--gold-primary, #d4af37); font-size: 0.95rem; display: block; margin-bottom: 3px;">Mukesh Gurjar</strong>
+        <span style="color: #94a3b8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;">Transport Logistics Director</span>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="review-slide-card">
+        <p style="color: #e2e8f0; font-size: 0.88rem; line-height: 1.65; font-style: italic; margin-bottom: 16px;">
+          "As a government professional, absolute regulatory compliance, clean title chain, and strict RERA governance were non-negotiable for me. The team offered honest legal evaluation, swift bank sanction clearance, and reliable ongoing support. A dependable platform for land buyers."
+        </p>
+        <strong style="color: var(--gold-primary, #d4af37); font-size: 0.95rem; display: block; margin-bottom: 3px;">Ramavtar Meena</strong>
+        <span style="color: #94a3b8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;">Administrative Services Officer</span>
+      </div>
+
+    </div>
+
+    <!-- Controls: Arrows & Indicator Dots -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 10px;">
+      <button type="button" onclick="slideReview(-1)" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-gold, #c5a880); color: #fff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer;">❮</button>
+      
+      <div class="review-dots-container" id="reviewDots">
+        <span class="review-dot active"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
+      </div>
+
+      <button type="button" onclick="slideReview(1)" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-gold, #c5a880); color: #fff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer;">❯</button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function slideReview(direction) {
+    var track = document.getElementById('reviewTrack');
+    if (track) {
+      var slideWidth = track.querySelector('.review-slide-card').offsetWidth + 15;
+      track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var track = document.getElementById('reviewTrack');
+    var dots = document.querySelectorAll('.review-dot');
+    if (track && dots.length > 0) {
+      track.addEventListener('scroll', function () {
+        var slideWidth = track.querySelector('.review-slide-card').offsetWidth + 15;
+        var activeIndex = Math.round(track.scrollLeft / slideWidth);
+        dots.forEach(function (dot, idx) {
+          if (idx === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      });
+    }
+  });
+</script>
+<!-- ================================================================= -->
 
     <!-- SEO BLOG REPORT SECTION (JAIPUR REAL ESTATE 2026)      -->
     
