@@ -264,18 +264,62 @@
         .modal-gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
         .modal-gallery-grid img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-gold); transition: 0.3s; }
         .modal-gallery-grid img:hover { transform: scale(1.03); border-color: var(--gold-hover); }
+/* --- Slider + Text Side-by-Side (Mobile & Desktop dono par saman) --- */
+.hero-two-col {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 15px 10px !important;
+    max-width: 1250px;
+    margin: 0 auto;
+}
 
-        /* --- Projects Grid (Mobile aur Desktop dono par 2 Grid rahegi) --- */
+.hero-two-col-left {
+    flex: 1 1 50% !important;
+    width: 50% !important;
+}
+
+.hero-two-col-right {
+    flex: 1 1 50% !important;
+    width: 50% !important;
+}
+
+/* --- Projects Grid (Mobile aur Desktop dono par PAKKA 2 COLUMNS) --- */
 .projects-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 14px !important;
-    padding: 0 10px !important;
+    gap: 10px !important;
+    padding: 0 8px !important;
 }
 
-@media (max-width: 768px) {
-    .nav-links { display: none !important; }
-    .top-bar-left { display: none !important; }
+.project-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    cursor: pointer !important;
+    user-select: none;
+}
+
+.project-card h3 {
+    font-size: 0.9rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Project Full Screen Details (No tiny popup, pure screen) --- */
+.full-project-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0d121c;
+    z-index: 999999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 15px 80px;
 }
 
 /* --- Floating WhatsApp Button --- */
@@ -297,38 +341,8 @@
     text-decoration: none !important;
 }
 
-
-    /* Hero Section Mobile */
-    .hero-text h1 {
-        font-size: 24px !important;
-        line-height: 1.3 !important;
-    }
-
-    .hero-subtitle {
-        font-size: 14px !important;
-    }
-
-    /* Projects Grid Mobile */
-    .projects-grid {
-        grid-template-columns: 1fr !important;
-        padding: 10px !important;
-        gap: 20px !important;
-    }
-
-    .project-card {
-        width: 100% !important;
-    }
-
-    /* Bottom Form / Enquiry Box */
-    .bottom-form-box {
-        width: 95% !important;
-        padding: 15px !important;
-    }
-
-    .form-group input, 
-    .form-group select {
-        font-size: 16px !important;
-    }
+@media (max-width: 768px) {
+    .nav-links, .top-bar-left { display: none !important; }
 }
 
     </style>
@@ -366,69 +380,55 @@
         </ul>
         <a href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20am%20interested%20in%20plots%20in%20Jaipur.%20Please%20share%20details." class="btn-gold" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Direct</a>
     </nav>
-    <!-- Clean Hero Section with Side-by-Side Slider & Content -->
-    <section class="hero-custom-wrapper" style="padding: 40px 5% 50px; background: linear-gradient(rgba(18, 24, 36, 0.92), rgba(18, 24, 36, 0.95)), url('https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; border-bottom: 1px solid var(--border-gold);">
-      <div style="max-width: 1250px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 35px;">
+        <!-- Clean Hero Section: 50-50 Side-by-Side on All Screens -->
+    <section style="background: var(--bg-card); border-bottom: 1px solid var(--border-gold); padding: 15px 8px;">
+      <div class="hero-two-col">
         
-        <!-- Left Side: Auto Image Slider Box -->
-        <div style="flex: 1 1 480px; min-width: 300px; display: flex; flex-direction: column; align-items: center;">
-          <div class="slider-box" style="width: 100%; height: 380px; border-radius: 12px; position: relative; overflow: hidden; border: 1.5px solid var(--border-gold); box-shadow: 0 12px 35px rgba(0,0,0,0.6);">
+        <!-- Left Side: Slider Box -->
+        <div class="hero-two-col-left">
+          <div class="slider-box" style="width: 100%; height: 260px; border-radius: 8px; position: relative; overflow: hidden; border: 1.5px solid var(--border-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
               <img src="IMG-20260715-WA0019.jpg" class="slide-img active" alt="Jaipur Property 1">
               <img src="IMG-20260724-WA0005.jpg" class="slide-img" alt="Jaipur Property 2">
               <img src="IMG-20260514-WA0015.jpg" class="slide-img" alt="Jaipur Property 3">
               <img src="overview-com-2.webp" class="slide-img" alt="Jaipur Property 4">
               <img src="IMG-20260627-WA0006.jpg" class="slide-img" alt="Jaipur Property 5">
           </div>
-          <div style="margin-top: 15px; text-align: center;">
-            <span style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; font-size: 0.8rem; font-weight: 700; padding: 5px 14px; border-radius: 20px; text-transform: uppercase;">
-              ✔ ऑन-ग्राउंड विजिट • 100% क्लियर टाइटल
+          <div style="text-align: center; margin-top: 8px;">
+            <span style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; display: inline-block;">
+              ✔ ऑन-ग्राउंड विजिट • 100% पट्टा
             </span>
           </div>
         </div>
 
-                <!-- Right Side: Local Expert Service Details (Professional English) -->
-        <div style="flex: 1 1 520px; min-width: 300px;">
-          <span class="hero-badge" style="display: inline-block; margin-bottom: 12px;"><i class="fa-solid fa-award"></i> Premier Land Advisory in Jaipur</span>
-          
-          <h1 style="font-family: 'Cinzel', serif; font-size: 2.1rem; line-height: 1.3; color: #fff; margin-bottom: 12px;">
-            JDA & RERA APPROVED <span style="color: var(--gold-primary); display: block;">RESIDENTIAL & COMMERCIAL PLOTS</span>
-          </h1>
+        <!-- Right Side: Content Box -->
+        <div class="hero-two-col-right" style="display: flex; flex-direction: column; justify-content: center;">
+          <span style="color: var(--gold-primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
+            Premier Land Advisory
+          </span>
+          <h2 style="font-family: 'Cinzel', serif; font-size: 1.05rem; line-height: 1.25; color: #fff; margin-bottom: 6px;">
+            JDA & RERA APPROVED <span style="color: var(--gold-primary);">PLOTS IN JAIPUR</span>
+          </h2>
 
-          <p style="color: #f1f5f9; font-size: 0.95rem; line-height: 1.65; margin-bottom: 12px;">
-            Jaipur is rapidly establishing itself as North India’s fastest-growing real estate investment corridor. Landmark infrastructure developments—including the 3,000-acre <strong>Mahindra World City (SEZ on Ajmer Road)</strong>, the 200 ft <strong>Ring Road Expressway</strong>, and the 1,800-Bigha <strong>Knowledge City (Chittora on Diggi Road)</strong>—are fueling exponential land appreciation. For secure wealth creation and high-yield returns, now is the opportune time to invest.
+          <p style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.4; margin-bottom: 6px;">
+            Jaipur's top growth corridors: <strong>Mahindra SEZ (Ajmer Rd)</strong>, 200ft <strong>Ring Road</strong> & <strong>Knowledge City (Diggi Rd)</strong>. Secure high-yield investments today.
           </p>
 
-          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 18px;">
-            <strong>Jaipur Plot Finder</strong> bridges the trust gap for both domestic purchasers and outstation investors across <strong>Gurgaon, Noida, and Delhi-NCR</strong> through authentic on-ground video tours, verified JDA Patta documentation, and <strong>0% brokerage direct consultancy</strong>.
+          <p style="color: #94a3b8; font-size: 0.72rem; line-height: 1.4; margin-bottom: 10px;">
+            <strong>Jaipur Plot Finder</strong> offers direct owner deals with <strong>0% brokerage</strong> and 80-90% bank loan approval.
           </p>
 
-          <!-- Key Highlights -->
-          <div style="margin-bottom: 22px; display: grid; gap: 8px;">
-            <div style="display: flex; align-items: flex-start; gap: 10px; color: #f1f5f9; font-size: 0.88rem;">
-              <i class="fa-solid fa-circle-check" style="color: var(--gold-primary); margin-top: 3px;"></i>
-              <span><strong>100% JDA Patta & RERA Registered:</strong> Clear title properties with guaranteed registry peace of mind.</span>
-            </div>
-            <div style="display: flex; align-items: flex-start; gap: 10px; color: #f1f5f9; font-size: 0.88rem;">
-              <i class="fa-solid fa-circle-check" style="color: var(--gold-primary); margin-top: 3px;"></i>
-              <span><strong>80% to 90% Bank Loan & Easy EMI:</strong> Pre-approved by leading nationalized and private banks (SBI, HDFC, ICICI).</span>
-            </div>
-            <div style="display: flex; align-items: flex-start; gap: 10px; color: #f1f5f9; font-size: 0.88rem;">
-              <i class="fa-solid fa-circle-check" style="color: var(--gold-primary); margin-top: 3px;"></i>
-              <span><strong>Direct Guidance by Teerth Yadav:</strong> Zero hidden commission, transparent registry support, and complimentary site visits.</span>
-            </div>
-          </div>
-
-          <!-- Direct Buttons -->
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20am%20interested%20in%20JDA%20approved%20plots%20in%20Jaipur.%20Please%20share%20details." class="btn-gold" target="_blank" style="padding: 10px 22px; font-size: 0.85rem;">
-              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <a href="https://wa.me/919772083304" target="_blank" class="btn-gold" style="padding: 6px 10px; font-size: 0.72rem; text-decoration: none;">
+              WhatsApp
             </a>
-            <a href="#featured-projects" class="btn-outline" style="padding: 10px 20px; font-size: 0.85rem;">
-              View Main Projects →
+            <a href="#featured-projects" class="btn-outline" style="padding: 6px 8px; font-size: 0.72rem; text-decoration: none;">
+              View Plots →
             </a>
           </div>
-
         </div>
+
+      </div>
+    </section>
 
       </div>
     </section>
@@ -1441,78 +1441,50 @@
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 <script>
-  // Function to open modal and push state into browser history
-  function openProjectModal(modalId) {
-    var modal = document.getElementById(modalId);
-    if (modal) {
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-      // History push karega taaki mobile back button se site exit na ho
-      history.pushState({ modalOpen: true, targetId: modalId }, "");
-    }
-  }
-
-  // Cross (X) icon se close karne ke liye
-  function closeProjectModal(modalId) {
-    var modal = document.getElementById(modalId);
-    if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  }
-
-  // Phone ka hardware/system back button dabane par sirf popup close hoga
-  window.addEventListener('popstate', function(event) {
-    var allModals = document.querySelectorAll('.modal, .project-modal');
-    allModals.forEach(function(m) {
-      m.style.display = 'none';
-    });
-    document.body.style.overflow = 'auto';
-  });
-</script>
 <script>
-  // 1. Automatic pure card ko clickable banana (Har card me alag se change karne ki zarurat nahi)
-  document.addEventListener("DOMContentLoaded", function() {
-    var cards = document.querySelectorAll(".project-card");
-    cards.forEach(function(card) {
-      card.style.cursor = "pointer";
-      
-      card.addEventListener("click", function(e) {
-        // Agar user ne direct kisi link ya button par click nahi kiya hai, tabhi trigger ho
-        var btn = card.querySelector("button, .btn-gold, .btn-outline, a[onclick*='open']");
-        if (btn && !e.target.closest("a, button")) {
-          btn.click();
-        }
-      });
-    });
-  });
-
-  // 2. Mobile Phone Back Button Fix
+  // 1. Mobile Back Button support ke sath details open karna
   function openProjectModal(modalId) {
-    var modal = document.getElementById(modalId);
-    if (modal) {
-      modal.style.display = "block";
-      document.body.style.overflow = "hidden";
-      // Phone back button history entry
+    var target = document.getElementById(modalId);
+    if (target) {
+      target.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      // URL me history state push taaki back button se homepage par rahe
       history.pushState({ modalOpen: true, id: modalId }, "");
     }
   }
 
+  // 2. Cross icon ya close button se band karna
   function closeProjectModal(modalId) {
-    var modal = document.getElementById(modalId);
-    if (modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
+    var target = document.getElementById(modalId);
+    if (target) {
+      target.style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
   }
 
-  // Phone ka back button dabane par website band na ho, popup band ho
-  window.addEventListener("popstate", function(event) {
-    var allModals = document.querySelectorAll(".modal, .project-modal");
-    allModals.forEach(function(m) {
-      m.style.display = "none";
+  // 3. Phone ka system back button dabane par site exit nahi hogi, sirf modal band hoga
+  window.addEventListener('popstate', function (event) {
+    var allModals = document.querySelectorAll('.modal, .project-modal, .full-project-screen');
+    allModals.forEach(function (m) {
+      m.style.display = 'none';
     });
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = 'auto';
+  });
+
+  // 4. Card ke kisi bhi hisse par click karne se details khule
+  document.addEventListener('DOMContentLoaded', function () {
+    var cards = document.querySelectorAll('.project-card');
+    cards.forEach(function (card) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function (e) {
+        if (!e.target.closest('a, button')) {
+          var actionBtn = card.querySelector('button, .btn-gold, .btn-outline, a');
+          if (actionBtn) {
+            actionBtn.click();
+          }
+        }
+      });
+    });
   });
 </script>
 
