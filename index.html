@@ -300,13 +300,6 @@
     user-select: none;
 }
 
-.project-card h3 {
-    font-size: 0.9rem !important;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 /* --- Project Full Screen Details (No tiny popup, pure screen) --- */
 .full-project-screen {
     display: none;
@@ -361,6 +354,60 @@
 @media (max-width: 768px) { .nav-links, .top-bar-left { display: none !important; } }
 
     </style>
+    /* ================= 1. PURE PAGE KA TEXT 30% BADA ================= */
+html {
+    font-size: 130% !important;
+}
+
+body {
+    font-size: 1.15rem !important;
+    line-height: 1.6 !important;
+}
+
+/* ================= 2. PROJECT CARDS ULTRA LARGE FONTS (70-80% BIGGER) ================= */
+
+/* Project Title (CHART NEXARA, KNOWLEDGE PARK, etc.) */
+.project-card .card-body h3,
+.project-card h3 {
+    font-size: 1.85rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.5px !important;     
+    color: var(--gold-hover, #f5c042) !important; 
+    margin: 15px 0 10px 0 !important;
+    text-transform: uppercase !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+}
+
+/* RERA & Road Location Text */
+.project-card .card-body p,
+.project-card p {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    line-height: 1.6 !important;
+    color: #f1f5f9 !important;
+    margin-bottom: 20px !important;
+}
+
+/* "VIEW FULL DETAILS" Button & Text */
+.project-card .card-body button,
+.project-card button,
+.project-card .btn-outline {
+    font-size: 1.2rem !important;
+    font-weight: 800 !important;          
+    letter-spacing: 1.2px !important;
+    padding: 14px 32px !important;
+    border-radius: 8px !important;
+    text-transform: uppercase !important;
+    border: 2px solid var(--border-gold, #c5a880) !important;
+}
+
+/* Photo Tag ("7 Photos", "10 Photos") */
+.project-card .card-badge {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    padding: 7px 16px !important;
+}
 </head>
 <body>
 
@@ -1667,27 +1714,22 @@
     });
     document.body.style.overflow = 'auto';
   });
-
-  // 3. Pure Card par KAHIN BHI touch karte hi screen khulegi
+  // 3. Pure Column / Card par kahi bhi touch karne par direct screen khulegi
   document.addEventListener('DOMContentLoaded', function () {
     var cards = document.querySelectorAll('.project-card');
     cards.forEach(function (card) {
       card.style.cursor = 'pointer';
       
-      // Card ke andar jo bhi button par onclick hai use nikaal kar direct card par bind kar do
-      var btn = card.querySelector('button[onclick], a[onclick]');
+      // Card ke andar wala button pakad kar uska modal action seedhe card par set karo
+      var btn = card.querySelector('button[onclick]');
       if (btn) {
-        var actionAttr = btn.getAttribute('onclick');
-        if (actionAttr) {
-          card.onclick = function (e) {
-            // Agar seedhe WhatsApp ya phone number link par click hua ho toh mat roko
-            if (e.target.closest('a[href^="http"], a[href^="https"], a[href^="tel"]')) {
-              return;
-            }
-            new Function(actionAttr)();
-          };
+        var clickAttr = btn.getAttribute('onclick');
+        if (clickAttr) {
+          card.setAttribute('onclick', clickAttr);
         }
       }
+    });
+  });
     });
   });
 </script>
