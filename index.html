@@ -14,7 +14,7 @@
 </script>
 
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=1200">
   <meta name="google-site-verification" content="299G48sGqmOIGibiXsuoKjTmY8wF4jQmDKowV8KhYLo" />
     <!-- High-Intent Title for Local & NCR Investors -->
     <title>JDA & RERA Approved Plots in Jaipur | Jaipur Plot Finder</title>
@@ -1625,49 +1625,69 @@
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 <script>
-<script>
-  // 1. Mobile Back Button support ke sath details open karna
+    <script>
+  // 1. Dono functions ko support karega (openModal aur openProjectModal)
+  function openModal(modalId) {
+    openProjectModal(modalId);
+  }
+
   function openProjectModal(modalId) {
     var target = document.getElementById(modalId);
+    if (!target) {
+      // Agar ID ke aage Modal laga ho jaise 'akiraModal'
+      target = document.getElementById(modalId + 'Modal') || document.getElementById(modalId + '-modal');
+    }
     if (target) {
       target.style.display = 'block';
       document.body.style.overflow = 'hidden';
-      // URL me history state push taaki back button se homepage par rahe
       history.pushState({ modalOpen: true, id: modalId }, "");
     }
   }
 
-  // 2. Cross icon ya close button se band karna
+  function closeModal(modalId) {
+    closeProjectModal(modalId);
+  }
+
   function closeProjectModal(modalId) {
     var target = document.getElementById(modalId);
+    if (!target) {
+      target = document.getElementById(modalId + 'Modal') || document.getElementById(modalId + '-modal');
+    }
     if (target) {
       target.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
   }
 
-  // 3. Phone ka system back button dabane par site exit nahi hogi, sirf modal band hoga
+  // 2. Mobile Back button se modal close hoga, site exit nahi hogi
   window.addEventListener('popstate', function (event) {
-    var allModals = document.querySelectorAll('.modal, .project-modal, .full-project-screen');
+    var allModals = document.querySelectorAll('.modal, .project-modal, .full-project-screen, [id*="modal"], [id*="Modal"]');
     allModals.forEach(function (m) {
       m.style.display = 'none';
     });
     document.body.style.overflow = 'auto';
   });
 
-  // 4. Card ke kisi bhi hisse par click karne se details khule
+  // 3. Pure Card par KAHIN BHI touch karte hi screen khulegi
   document.addEventListener('DOMContentLoaded', function () {
     var cards = document.querySelectorAll('.project-card');
     cards.forEach(function (card) {
       card.style.cursor = 'pointer';
-      card.addEventListener('click', function (e) {
-        if (!e.target.closest('a, button')) {
-          var actionBtn = card.querySelector('button, .btn-gold, .btn-outline, a');
-          if (actionBtn) {
-            actionBtn.click();
-          }
+      
+      // Card ke andar jo bhi button par onclick hai use nikaal kar direct card par bind kar do
+      var btn = card.querySelector('button[onclick], a[onclick]');
+      if (btn) {
+        var actionAttr = btn.getAttribute('onclick');
+        if (actionAttr) {
+          card.onclick = function (e) {
+            // Agar seedhe WhatsApp ya phone number link par click hua ho toh mat roko
+            if (e.target.closest('a[href^="http"], a[href^="https"], a[href^="tel"]')) {
+              return;
+            }
+            new Function(actionAttr)();
+          };
         }
-      });
+      }
     });
   });
 </script>
