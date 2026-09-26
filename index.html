@@ -265,55 +265,38 @@
         .modal-gallery-grid img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-gold); transition: 0.3s; }
         .modal-gallery-grid img:hover { transform: scale(1.03); border-color: var(--gold-hover); }
 
-        @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2rem; }
-            .nav-links { display: none; }
-            .top-bar-left { display: none; }
-        }
-/* --- 1. WhatsApp Floating Button Fix (Always Stays on Screen) --- */
+        /* --- Projects Grid (Mobile aur Desktop dono par 2 Grid rahegi) --- */
+.projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+    padding: 0 10px !important;
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .top-bar-left { display: none !important; }
+}
+
+/* --- Floating WhatsApp Button --- */
 .floating-wa {
     position: fixed !important;
     bottom: 25px !important;
     right: 25px !important;
-    width: 68px !important;
-    height: 68px !important;
+    width: 60px !important;
+    height: 60px !important;
     background-color: #25d366 !important;
     color: #ffffff !important;
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 38px !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+    font-size: 32px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
     z-index: 99999 !important;
     text-decoration: none !important;
-    transition: transform 0.3s ease;
 }
 
-.floating-wa:hover {
-    transform: scale(1.1);
-}
-
-
-/* --- 2. Mobile Responsive Screen Fix --- */
-            html, body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-    }
-
-    .slider-box {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-
-    /* Top Bar Mobile */
-    .top-bar {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        padding: 10px;
-    }
 
     /* Hero Section Mobile */
     .hero-text h1 {
@@ -1457,6 +1440,81 @@
 <a href="https://wa.me/919772083304?text=Hello%20Teerth%20Ji%2C%20I%20am%20interested%20in%20plots%20in%20Jaipur.%20Please%20share%20details." class="floating-wa" target="_blank" title="WhatsApp Chat">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
+<script>
+  // Function to open modal and push state into browser history
+  function openProjectModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      // History push karega taaki mobile back button se site exit na ho
+      history.pushState({ modalOpen: true, targetId: modalId }, "");
+    }
+  }
+
+  // Cross (X) icon se close karne ke liye
+  function closeProjectModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  // Phone ka hardware/system back button dabane par sirf popup close hoga
+  window.addEventListener('popstate', function(event) {
+    var allModals = document.querySelectorAll('.modal, .project-modal');
+    allModals.forEach(function(m) {
+      m.style.display = 'none';
+    });
+    document.body.style.overflow = 'auto';
+  });
+</script>
+<script>
+  // 1. Automatic pure card ko clickable banana (Har card me alag se change karne ki zarurat nahi)
+  document.addEventListener("DOMContentLoaded", function() {
+    var cards = document.querySelectorAll(".project-card");
+    cards.forEach(function(card) {
+      card.style.cursor = "pointer";
+      
+      card.addEventListener("click", function(e) {
+        // Agar user ne direct kisi link ya button par click nahi kiya hai, tabhi trigger ho
+        var btn = card.querySelector("button, .btn-gold, .btn-outline, a[onclick*='open']");
+        if (btn && !e.target.closest("a, button")) {
+          btn.click();
+        }
+      });
+    });
+  });
+
+  // 2. Mobile Phone Back Button Fix
+  function openProjectModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden";
+      // Phone back button history entry
+      history.pushState({ modalOpen: true, id: modalId }, "");
+    }
+  }
+
+  function closeProjectModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  }
+
+  // Phone ka back button dabane par website band na ho, popup band ho
+  window.addEventListener("popstate", function(event) {
+    var allModals = document.querySelectorAll(".modal, .project-modal");
+    allModals.forEach(function(m) {
+      m.style.display = "none";
+    });
+    document.body.style.overflow = "auto";
+  });
+</script>
 
 </body>
 </html>
