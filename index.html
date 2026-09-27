@@ -395,26 +395,16 @@ body {
     border-radius: 8px !important;
     text-transform: uppercase !important;
     border: 2px solid var(--border-gold, #c5a880) !important;
-}
-
-.project-card .card-badge {
-    font-size: 1.05rem !important;
-    font-weight: 700 !important;
-    padding: 7px 16px !important;
-}
-        .project-card img,
-.project-card .card-img-wrap,
-.project-card .card-badge {
+/* Card ke andar har cheez touch ko pass karegi */
+.project-card * {
     pointer-events: none !important;
 }
-/* Card ke andar image aur badge click ko block na karein */
-.project-card img,
-.project-card .card-img-wrap,
-.project-card .card-badge {
-    pointer-events: none !important;
+.project-card {
+    pointer-events: auto !important;
+    cursor: pointer !important;
 }
 
-    </style>
+  </style>
 </head>
 <body>
 
@@ -513,8 +503,7 @@ body {
 
         <div class="projects-grid">
             
-            <div class="project-card">
-                <div class="card-img-container">
+                <div class="project-card" onclick="openModal('nexara')" style="cursor: pointer;">
                     <img src="IMG-20260715-WA0019.jpg" class="card-img" alt="Chart Nexara">
                     <span class="card-badge">7 Photos</span>
                 </div>
@@ -523,9 +512,8 @@ body {
                     <p>Near Ajmer Highway, Mahindra SEZ Side | RERA: RAJ/P/2026/5221</p>
                     <button class="btn-outline" onclick="openModal('nexara')">View Full Details</button>
                 </div>
-            </div>
-
-            <div class="project-card">
+            
+            <div class="project-card" onclick="openModal('knowledge')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="IMG-20260724-WA0005.jpg" class="card-img" alt="Knowledge Park">
                     <span class="card-badge">5 Photos</span>
@@ -537,7 +525,7 @@ body {
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('orbis')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="IMG-20260514-WA0015.jpg" class="card-img" alt="The Orbis SEZ">
                     <span class="card-badge">10 Photos</span>
@@ -549,7 +537,7 @@ body {
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('akira')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="overview-com-2.webp" class="card-img" alt="Akira Havenwoods">
                     <span class="card-badge">5 Photos</span>
@@ -561,7 +549,7 @@ body {
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('silversands')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="IMG-20260627-WA0006.jpg" class="card-img" alt="Silver Sands">
                     <span class="card-badge">7 Photos</span>
@@ -1680,7 +1668,7 @@ body {
 </a>
 <script>
     <script>
-  // 1. Dono functions ko support karega (openModal aur openProjectModal)
+  // 1. Modal Open Function (Back button support ke saath)
   function openModal(modalId) {
     openProjectModal(modalId);
   }
@@ -1688,16 +1676,18 @@ body {
   function openProjectModal(modalId) {
     var target = document.getElementById(modalId);
     if (!target) {
-      // Agar ID ke aage Modal laga ho jaise 'akiraModal'
       target = document.getElementById(modalId + 'Modal') || document.getElementById(modalId + '-modal');
     }
+
     if (target) {
       target.style.display = 'block';
       document.body.style.overflow = 'hidden';
-      history.pushState({ modalOpen: true, id: modalId }, "");
+      // URL me #details judega taaki back dabane par site exit na ho
+      history.pushState({ modalOpen: true, id: target.id }, '', '#details');
     }
   }
 
+  // 2. Modal Close Function
   function closeModal(modalId) {
     closeProjectModal(modalId);
   }
@@ -1707,13 +1697,19 @@ body {
     if (!target) {
       target = document.getElementById(modalId + 'Modal') || document.getElementById(modalId + '-modal');
     }
+
     if (target) {
       target.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
+
+    // Agar URL me #details hai toh browser history piche le aao
+    if (window.location.hash === '#details') {
+      history.back();
+    }
   }
 
-  // 2. Mobile Back button se modal close hoga, site exit nahi hogi
+  // 3. Mobile Back Button Se Site Exit Nahi Hogi (Sirf modal band hoga)
   window.addEventListener('popstate', function (event) {
     var allModals = document.querySelectorAll('.modal, .project-modal, .full-project-screen, [id*="modal"], [id*="Modal"]');
     allModals.forEach(function (m) {
@@ -1721,23 +1717,32 @@ body {
     });
     document.body.style.overflow = 'auto';
   });
-    // Pure Card ya Image par kahi bhi touch hone par turant modal khole
+
+  // 4. Sabhi Cards (Main + More Projects) par touch click automatic activate hoga
   document.addEventListener('click', function (e) {
-    var card = e.target.closest('.project-card');
-    if (card && !e.target.closest('a')) {
-      var btn = card.querySelector('button[onclick]');
+    // Agar WhatsApp ya Call link hai toh popup na khole
+    if (e.target.closest('a[href^="http"], a[href^="https"], a[href^="tel"]')) {
+      return;
+    }
+
+    // Main Projects aur More Projects dono ke cards ko target karega
+    var card = e.target.closest('.project-card, .more-project-card, [class*="project"]');
+    if (card) {
+      var btn = card.querySelector('button[onclick], a[onclick]');
       if (btn) {
         var attr = btn.getAttribute('onclick');
-        var match = attr.match(/['"]([^'"]+)['"]/);
-        if (match && match[1]) {
-          openModal(match[1]);
-        } else {
-          btn.click();
+        if (attr) {
+          var match = attr.match(/['"]([^'"]+)['"]/);
+          if (match && match[1]) {
+            openModal(match[1]);
+          } else {
+            btn.click();
+          }
         }
       }
     }
   });
-  });
+
 </script>
 
 </body>
