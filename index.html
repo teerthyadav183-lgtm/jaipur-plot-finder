@@ -240,13 +240,53 @@
 
         .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 9999; text-decoration: none; transition: 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
+/* Full-Screen Project View */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0d121c;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
-        /* Popup Modal */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(5px); overflow-y: auto; }
-        .modal-content { background: #1a2232; margin: 3% auto; padding: 30px; border: 1px solid var(--border-gold); border-radius: 8px; width: 92%; max-width: 900px; position: relative; color: var(--text-light); box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
-        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; color: var(--gold-primary); cursor: pointer; transition: 0.2s; }
-        .close-modal:hover { color: #fff; }
-        
+.modal-content {
+    background: #0d121c;
+    margin: 0;
+    padding: 20px 15px 80px;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    position: relative;
+    color: var(--text-light);
+    box-shadow: none;
+}
+
+.close-modal {
+    position: fixed;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--gold-primary);
+    background: rgba(18, 24, 36, 0.9);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border-gold);
+    cursor: pointer;
+    z-index: 1000000;
+}
+.close-modal:hover { color: #fff; }    
         .modal-body h2 { font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 10px; font-size: 1.8rem; }
         .modal-meta { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 12px; line-height: 1.8; }
         .modal-section { margin-bottom: 22px; }
@@ -629,7 +669,7 @@ body {
         </div>
         <div class="projects-grid">
             
-            <div class="project-card">
+    <div class="project-card" onclick="openModal('ganesham')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="shree-ganesham-6.jpg" class="card-img" alt="Shree Ganesham">
                     <span class="card-badge">5 Photos</span>
@@ -641,7 +681,7 @@ body {
                 </div>
             </div>
 
-            <div class="project-card">
+    <div class="project-card" onclick="openModal('jaisagar')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="overview-com-1.webp" class="card-img" alt="Jai Sagar City">
                     <span class="card-badge">4 Photos</span>
@@ -653,7 +693,7 @@ body {
                 </div>
             </div>
 
-            <div class="project-card">
+    <div class="project-card" onclick="openModal('kings')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="proj_img-45780_1-770x400.jpg" class="card-img" alt="Kings Residency">
                     <span class="card-badge">5 Photos</span>
@@ -665,7 +705,7 @@ body {
                 </div>
             </div>
 
-            <div class="project-card">
+<div class="project-card" onclick="openModal('rukmani')" style="cursor: pointer;">
                 <div class="card-img-container">
                     <img src="rukaman.webp" class="card-img" alt="Rukmani Nagar">
                     <span class="card-badge">6 Photos</span>
@@ -723,7 +763,8 @@ body {
             <div class="modal-body" id="modalContainer"></div>
         </div>
     </div>
-
+    <!-- Full Screen Image Zoom Viewer -->
+    <div id="imageZoomOverlay" onclick="closeZoomImage()"><img id="zoomedImg" src="" alt="Full View"></div>
     <script>
         // 1. Auto Background Slider (3.5s Cycle)
         let currentSlide = 0;
@@ -1671,73 +1712,145 @@ body {
     <script>
   // 1. Modal Open Function (Back button support ke saath)
   function openModal(modalId) {
-    openProjectModal(modalId);
+    var data = projectData[modalId];
+    if (!data) return;
+
+    let featHtml = data.features.map(f => `<li><i class="fa-solid fa-circle-check" style="color:var(--gold-primary);"></i> ${f}</li>`).join('');
+    let advHtml = data.advantages.map(a => `<li><i class="fa-solid fa-location-dot" style="color:var(--gold-primary);"></i> ${a}</li>`).join('');
+    
+    // Har image par click karne se badi HD image khulegi
+    let galleryHtml = data.gallery.map(imgSrc => `<img src="${imgSrc}" alt="${data.name}" onclick="zoomImage('${imgSrc}')" style="cursor:zoom-in;">`).join('');
+
+    const html = `
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px; cursor:pointer;" onclick="closeModal()">
+            <span style="color:var(--gold-primary); font-size:1.1rem; font-weight:700;">← Back to Home Page</span>
+        </div>
+        <h2>${data.name}</h2>
+        <div style="text-align:center; margin: 15px 0;">
+            <img src="${data.img}" onclick="zoomImage('${data.img}')" style="width:100%; max-height:400px; object-fit:cover; border-radius:8px; border:1.5px solid var(--border-gold); cursor:zoom-in;" alt="${data.name}">
+        </div>
+        <div class="modal-meta">
+            <strong>Location:</strong> ${data.location}<br>
+            <strong>Property Type:</strong> ${data.type}<br>
+            <strong>RERA / JDA Status:</strong> ${data.rera}<br>
+            <strong>Plot Sizes:</strong> ${data.size}<br>
+            <strong>Price / Budget:</strong> <span style="color:var(--gold-primary); font-weight:700;">${data.price}</span><br>
+            <strong>Possession Status:</strong> ${data.possession}
+        </div>
+        <div class="modal-section">
+            <h4>About the Project</h4>
+            <p>${data.about}</p>
+        </div>
+        <div class="modal-section">
+            <h4>Key Features & Amenities</h4>
+            <ul>${featHtml}</ul>
+        </div>
+        <div class="modal-section">
+            <h4>Why Invest in this Project?</h4>
+            <p>${data.why}</p>
+            ${data.tableHtml}
+        </div>
+        <div class="modal-section" style="margin-top:15px;">
+            <h4>Location Advantage & Connectivity</h4>
+            <ul>${advHtml}</ul>
+        </div>
+        <div class="modal-section">
+            <h4>Property Availability</h4>
+            <p style="color:var(--gold-primary); font-weight:600;">${data.available}</p>
+        </div>
+
+        <div class="modal-section" style="margin-top:20px;">
+            <h4>Project Gallery & Layout Images (Tap photo to zoom)</h4>
+            <div class="modal-gallery-grid">
+                ${galleryHtml}
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+            <button onclick="selectAndScroll('${data.name}')" class="btn-gold" style="padding:12px 28px; font-size:0.9rem;"><i class="fa-solid fa-map"></i> Request Zonal Map & Rates On WhatsApp</button>
+        </div>
+    `;
+
+    document.getElementById('modalContainer').innerHTML = html;
+    var modal = document.getElementById('projectModal');
+    if (modal) {
+      modal.style.display = 'block';
+      modal.scrollTop = 0;
+    }
+    document.body.style.overflow = 'hidden';
+
+    // URL me #project judega taaki back dabane par site exit na ho
+    if (window.location.hash !== '#project') {
+      history.pushState({ modalOpen: true }, '', '#project');
+    }
   }
 
-  function openProjectModal(modalId) {
-    var target = document.getElementById(modalId);
-    if (!target) {
-      target = document.getElementById(modalId + 'Modal') || document.getElementById(modalId + '-modal');
+  // 2. Safe Close Function
+  function closeModal() {
+    var modal = document.getElementById('projectModal');
+    if (modal) {
+      modal.style.display = 'none';
     }
+    document.body.style.overflow = 'auto';
 
-    if (target) {
-      target.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-      // URL me #details judega taaki back dabane par site exit na ho
-      history.pushState({ modalOpen: true, id: target.id }, '', '#details');
-    }
-  }
-
-  // 2. Modal Close Function
-  function closeModal(modalId) {
-    closeProjectModal(modalId);
-  }
-
-  function closeProjectModal(modalId) {
-    var target = document.getElementById(modalId);
-    if (!target) {
-      target = document.getElementById(modalId + 'Modal') || document.getElementById(modalId + '-modal');
-    }
-
-    if (target) {
-      target.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    // Agar URL me #details hai toh browser history piche le aao
-    if (window.location.hash === '#details') {
+    if (window.location.hash === '#project') {
       history.back();
     }
   }
 
-  // 3. Mobile Back Button Se Site Exit Nahi Hogi (Sirf modal band hoga)
+  // 3. Photo Zoom Functions
+  function zoomImage(src) {
+    var overlay = document.getElementById('imageZoomOverlay');
+    var img = document.getElementById('zoomedImg');
+    if (overlay && img) {
+      img.src = src;
+      overlay.style.display = 'flex';
+      history.pushState({ imageZoom: true }, '', '#photo-view');
+    }
+  }
+
+  function closeZoomImage() {
+    var overlay = document.getElementById('imageZoomOverlay');
+    if (overlay) {
+      overlay.style.display = 'none';
+    }
+    if (window.location.hash === '#photo-view') {
+      history.back();
+    }
+  }
+
+  // 4. Mobile Hardware Back Button (Site Exit Rokna)
   window.addEventListener('popstate', function (event) {
-    var allModals = document.querySelectorAll('.modal, .project-modal, .full-project-screen, [id*="modal"], [id*="Modal"]');
-    allModals.forEach(function (m) {
-      m.style.display = 'none';
-    });
-    document.body.style.overflow = 'auto';
+    // Agar photo badi khuli hai toh pehle sirf photo band hogi
+    var zoomOverlay = document.getElementById('imageZoomOverlay');
+    if (zoomOverlay && zoomOverlay.style.display === 'flex') {
+      zoomOverlay.style.display = 'none';
+      return;
+    }
+
+    // Agar modal khula hai toh sirf modal band hoga, site exit nahi hogi
+    var modal = document.getElementById('projectModal');
+    if (modal && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
   });
 
-  // 4. Sabhi Cards (Main + More Projects) par touch click automatic activate hoga
+  // 5. Card par touch click handling (WhatsApp/Call links ko chhodkar)
   document.addEventListener('click', function (e) {
-    // Agar WhatsApp ya Call link hai toh popup na khole
     if (e.target.closest('a[href^="http"], a[href^="https"], a[href^="tel"]')) {
       return;
     }
 
-    // Main Projects aur More Projects dono ke cards ko target karega
-    var card = e.target.closest('.project-card, .more-project-card, [class*="project"]');
+    var card = e.target.closest('.project-card, .more-project-card');
     if (card) {
-      var btn = card.querySelector('button[onclick], a[onclick]');
+      var btn = card.querySelector('button[onclick]');
       if (btn) {
         var attr = btn.getAttribute('onclick');
         if (attr) {
           var match = attr.match(/['"]([^'"]+)['"]/);
           if (match && match[1]) {
             openModal(match[1]);
-          } else {
-            btn.click();
           }
         }
       }
