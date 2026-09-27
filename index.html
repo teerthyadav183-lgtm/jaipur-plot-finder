@@ -1710,7 +1710,10 @@ body {
 </a>
 <script>
     <script>
-  // 1. Modal Open Function (Back button support ke saath)
+    // 1. Mobile Back Protection Flag
+  var isModalActive = false;
+
+  // 2. Full-Screen Modal Open Function
   function openModal(modalId) {
     var data = projectData[modalId];
     if (!data) return;
@@ -1718,7 +1721,7 @@ body {
     let featHtml = data.features.map(f => `<li><i class="fa-solid fa-circle-check" style="color:var(--gold-primary);"></i> ${f}</li>`).join('');
     let advHtml = data.advantages.map(a => `<li><i class="fa-solid fa-location-dot" style="color:var(--gold-primary);"></i> ${a}</li>`).join('');
     
-    // Har image par click karne se badi HD image khulegi
+    // Gallery ki har photo par click karte hi full screen zoom hogi
     let galleryHtml = data.gallery.map(imgSrc => `<img src="${imgSrc}" alt="${data.name}" onclick="zoomImage('${imgSrc}')" style="cursor:zoom-in;">`).join('');
 
     const html = `
@@ -1727,6 +1730,7 @@ body {
         </div>
         <h2>${data.name}</h2>
         <div style="text-align:center; margin: 15px 0;">
+            <!-- Main Photo par click karte hi full screen zoom hogi -->
             <img src="${data.img}" onclick="zoomImage('${data.img}')" style="width:100%; max-height:400px; object-fit:cover; border-radius:8px; border:1.5px solid var(--border-gold); cursor:zoom-in;" alt="${data.name}">
         </div>
         <div class="modal-meta">
@@ -1779,33 +1783,33 @@ body {
     }
     document.body.style.overflow = 'hidden';
 
-    // URL me #project judega taaki back dabane par site exit na ho
-    if (window.location.hash !== '#project') {
-      history.pushState({ modalOpen: true }, '', '#project');
-    }
+    // Google par jane se rokne ke liye URL lock
+    isModalActive = true;
+    window.location.hash = 'project-details';
   }
 
-  // 2. Safe Close Function
+  // 3. Safe Close Function
   function closeModal() {
     var modal = document.getElementById('projectModal');
     if (modal) {
       modal.style.display = 'none';
     }
     document.body.style.overflow = 'auto';
+    isModalActive = false;
 
-    if (window.location.hash === '#project') {
+    if (window.location.hash.includes('project-details') || window.location.hash.includes('photo-view')) {
       history.back();
     }
   }
 
-  // 3. Photo Zoom Functions
+  // 4. Photo Zoom Functions (Badi photo dekhne ke liye)
   function zoomImage(src) {
     var overlay = document.getElementById('imageZoomOverlay');
     var img = document.getElementById('zoomedImg');
     if (overlay && img) {
       img.src = src;
       overlay.style.display = 'flex';
-      history.pushState({ imageZoom: true }, '', '#photo-view');
+      window.location.hash = 'photo-view';
     }
   }
 
@@ -1814,29 +1818,33 @@ body {
     if (overlay) {
       overlay.style.display = 'none';
     }
-    if (window.location.hash === '#photo-view') {
+    if (window.location.hash.includes('photo-view')) {
       history.back();
     }
   }
 
-  // 4. Mobile Hardware Back Button (Site Exit Rokna)
-  window.addEventListener('popstate', function (event) {
-    // Agar photo badi khuli hai toh pehle sirf photo band hogi
+  // 5. HARDWARE BACK BUTTON HANDLER (Google Search par jane se 100% rokega)
+  window.addEventListener('hashchange', function() {
     var zoomOverlay = document.getElementById('imageZoomOverlay');
-    if (zoomOverlay && zoomOverlay.style.display === 'flex') {
+    
+    // Step A: Agar Badi Photo khuli hai aur back dabaya -> Sirf photo band hogi, project khula rahega
+    if (zoomOverlay && zoomOverlay.style.display === 'flex' && !window.location.hash.includes('photo-view')) {
       zoomOverlay.style.display = 'none';
       return;
     }
 
-    // Agar modal khula hai toh sirf modal band hoga, site exit nahi hogi
-    var modal = document.getElementById('projectModal');
-    if (modal && modal.style.display === 'block') {
-      modal.style.display = 'none';
+    // Step B: Agar Project khula hai aur back dabaya -> Google par nahi jayega, project band hoke Home Page aayega
+    if (!window.location.hash.includes('project-details')) {
+      var modal = document.getElementById('projectModal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
       document.body.style.overflow = 'auto';
+      isModalActive = false;
     }
   });
 
-  // 5. Card par touch click handling (WhatsApp/Call links ko chhodkar)
+  // 6. Project Cards Click Handling
   document.addEventListener('click', function (e) {
     if (e.target.closest('a[href^="http"], a[href^="https"], a[href^="tel"]')) {
       return;
@@ -1856,6 +1864,7 @@ body {
       }
     }
   });
+
 
 </script>
 
