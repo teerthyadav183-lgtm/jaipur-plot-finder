@@ -91,6 +91,31 @@
       ]
     }
     </script>
+
+    <! URBAN VATIKA PRE-LAUNCH SCHEMA
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      "name": "Urban Vatika - Chart Group",
+      "description": "Upcoming JDA and RERA approved premium residential township Urban Vatika by Chart Group on Diggi Malpura Road Jaipur. Pre-launch bookings open with 0% brokerage.",
+      "url": "https://jaipurplotfinder.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Diggi Malpura Road, Near Knowledge City Belt",
+        "addressLocality": "Jaipur",
+        "addressRegion": "Rajasthan",
+        "addressCountry": "IN"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": "Price on Request",
+        "availability": "https://schema.org/PreOrder"
+      }
+    }
+    </script>
+
 <!-- Google Official FAQPage Schema (English + Hinglish SEO) -->
 <script type="application/ld+json">
 {
@@ -696,6 +721,184 @@ body {
 
 
     <!-- Main 5 Projects Section -->
+        <!-- ================= URBAN VATIKA TOP PRE-LAUNCH CARD ================= -->
+<style>
+  .uv-prelaunch-box {
+    background: linear-gradient(145deg, #131d31, #0b1120);
+    border: 2px solid #e2b740;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(226, 183, 64, 0.15);
+  }
+  .uv-banner-wrap {
+    position: relative;
+    width: 100%;
+    max-height: 480px;
+    overflow: hidden;
+    background: #000;
+  }
+  .uv-banner-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .uv-badge-top {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: #e2b740;
+    color: #0b1120;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+  .uv-badge-rera {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(11, 17, 32, 0.9);
+    color: #4ade80;
+    border: 1px solid #4ade80;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 30px;
+  }
+  .uv-content {
+    padding: 24px 28px;
+  }
+  .uv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .uv-title {
+    color: #ffffff;
+    font-size: 1.85rem;
+    font-family: 'Cinzel', serif, Georgia;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  .uv-brand {
+    color: #e2b740;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+  .uv-location {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .uv-rera-block {
+    background: rgba(226, 183, 64, 0.08);
+    border: 1px solid rgba(226, 183, 64, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .uv-rera-text {
+    font-size: 0.86rem;
+    color: #f1f5f9;
+    margin: 0;
+  }
+  .uv-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+    list-style: none;
+    padding: 0;
+  }
+  .uv-features-grid li {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .uv-features-grid li span {
+    color: #e2b740;
+    font-weight: bold;
+  }
+  .uv-action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .uv-price-box span {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+  .uv-price-box strong {
+    color: #fcd34d;
+    font-size: 1.25rem;
+  }
+  .uv-btn-whatsapp {
+    background: #25d366;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+  }
+  .uv-btn-whatsapp:hover {
+    background: #1eb954;
+    transform: translateY(-2px);
+  }
+</style>
+
+<div class="uv-prelaunch-box" id="urban-vatika">
+  <div class="uv-banner-wrap">
+    <!-- पोस्टर इमेज फ़ाइल का लिंक -->
+    <img src="urban-vatika-poster.jpg" alt="Urban Vatika Chart Group Diggi Malpura Road Jaipur">
+    <div class="uv-badge-top">🔥 Exclusive Pre-Launch</div>
+    <div class="uv-badge-rera">100% JDA & RERA Approved</div>
+  </div>
+
+  <div class="uv-content">
+    <div class="uv-header">
+      <h3 class="uv-title">URBAN VATIKA</h3>
+      <span class="uv-brand">BY CHART GROUP</span>
+    </div>
+
+    <div class="uv-location">
+      <i class="fa-solid fa-location-dot" style="color:#e2b740;"></i>
+      <span>Diggi Malpura Road, Jaipur (Near 1800+ Bigha Knowledge City Corridor)</span>
+    </div>
+
+    <!-- Official RERA & Approval Info -->
+    <div class="uv-rera-block">
+      <p class="uv-rera-text">
+        <strong>RERA No.:</strong> RAJ/P/2025/4242 &nbsp;|&nbsp; RAJ/P/2026/5400
+      </p>
     <section id="featured-projects">
         <div class="section-title">
             <span>FEATURED DEVELOPMENTS</span>
